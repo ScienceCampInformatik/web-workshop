@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>Science Camp Informatik - Foto-Party</title>
+		<meta charSet="utf-8" />
+		<meta content="initial-scale=1,width=device-width" name="viewport" />
+		<style> /*Reset Browser Default Styles*/
+			*,
+			*:after,
+			*:before {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;  /*Breite/Hoehe div = Content + Padding + Border, sonst nur Content*/
+				font-family: Arial, sans-serif;
+			}
+		</style>
+		<link href="foto.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+    <h3>This is a Foto-Party!</h3>
+    <div class="container_container">
+      <div class="canvas_container">
+        <canvas id="foto_can"></canvas>
+        <div class="button_list">
+          <button id="grey_button">GREY</button>
+          <button id="bla_button">BLA</button>
+        </div>
+      </div>
+      <div class="input_container">
+        <div class="button_list">
+          <button id="start_cam">Camera</button>
+          <input type="file" id="foto_input"></input>
+          <a href="javascript:void(0);" id="foto_down" download>Download</a>
+        </div>
+        <video id="video" autoplay></video>
+      </div>
+    </div>
+    <script src="foto.js"></script>
+	</body>
+</html>
