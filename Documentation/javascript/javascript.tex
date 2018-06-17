@@ -1,0 +1,192 @@
+%% LaTeX-Beamer template for KIT design
+%% by Erik Burger, Christian Hammer
+%% title picture by Klaus Krogmann
+%%
+%% version 2.1
+%%
+%% mostly compatible to KIT corporate design v2.0
+%% http://intranet.kit.edu/gestaltungsrichtlinien.php
+%%
+%% Problems, bugs and comments to
+%% burger@kit.edu
+
+\documentclass[18pt]{beamer}
+
+
+%% SLIDE FORMAT
+
+% use 'beamerthemekit' for standard 4:3 ratio
+% for widescreen slides (16:9), use 'beamerthemekitwide'
+\usepackage{listings}
+\usepackage{templates/beamerthemekit}
+% \usepackage{templates/beamerthemekitwide}
+\usepackage{color}
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
+\usepackage{upquote}
+\lstdefinelanguage{JavaScript}{
+	morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+	morecomment=[s]{/*}{*/},
+	morecomment=[l]//,
+	morestring=[b]",
+	morestring=[b]'
+}
+
+\lstdefinelanguage{HTML5}{
+	language=html,
+	sensitive=true, 
+	alsoletter={<>=-},
+	otherkeywords={
+		% HTML tags
+		<html>, <head>, <title>, </title>, <meta, />, </head>, <body>,
+		<canvas, \/canvas>, <script>, </script>, </body>, </html>, <!, html>, <style>, </style>, ><
+	},  
+	ndkeywords={
+		% General
+		=,
+		% HTML attributes
+		charset=, id=, width=, height=,
+		% CSS properties
+		border:, transform:, -moz-transform:, transition-duration:, transition-property:, transition-timing-function:
+	},  
+	morecomment=[s]{<!--}{-->},
+	tag=[s]
+}
+
+\lstset{%
+	% Basic design
+	backgroundcolor=\color{editorGray},
+	basicstyle={\small\ttfamily},   
+	frame=l,
+	% Line numbers
+	xleftmargin={0.75cm},
+	numbers=left,
+	stepnumber=1,
+	firstnumber=1,
+	numberfirstline=true,
+	% Code design   
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{darkgray}\ttfamily,
+	ndkeywordstyle=\color{editorGreen}\bfseries,
+	stringstyle=\color{editorOcher},
+	% Code
+	language=HTML5,
+	alsolanguage=JavaScript,
+	alsodigit={.:;},
+	tabsize=2,
+	showtabs=false,
+	showspaces=false,
+	showstringspaces=false,
+	extendedchars=true,
+	breaklines=true,        
+	% Support for German umlauts
+	literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+}
+%% TITLE PICTURE
+
+% if a custom picture is to be used on the title page, copy it into the 'logos'
+% directory, in the line below, replace 'mypicture' with the 
+% filename (without extension) and uncomment the following line
+% (picture proportions: 63 : 20 for standard, 169 : 40 for wide
+% *.eps format if you use latex+dvips+ps2pdf, 
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+\titleimage{logologo}
+
+%% TITLE LOGO
+
+% for a custom logo on the front page, copy your file into the 'logos'
+% directory, insert the filename in the line below and uncomment it
+
+%\titlelogo{mylogo}
+
+% (*.eps format if you use latex+dvips+ps2pdf,
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+%% TikZ INTEGRATION
+
+% use these packages for PCM symbols and UML classes
+% \usepackage{templates/tikzkit}
+% \usepackage{templates/tikzuml}
+
+% the presentation starts here
+
+\title[Javascript Basics]{Javascript Basics}
+%\subtitle{Something for XYZ 2009}
+\author{Lena, Kristin, Charlotte}
+
+% Bibliography
+
+\usepackage[citestyle=authoryear,bibstyle=numeric,hyperref,backend=biber]{biblatex}
+\addbibresource{templates/example.bib}
+\bibhang1em
+
+\begin{document}
+
+% change the following line to "ngerman" for German style date and logos
+\selectlanguage{ngerman}
+
+%title page
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section {Was ist Javascript}
+\begin{frame}{Was ist Javascript}
+\begin {itemize}
+\item Programmiersprache für Aktionen in Websiten
+\item Einfach zu lernen 
+\item Wird direkt beim Aufruf in Maschinensprache übersetzt und direkt ausgeführt
+\end {itemize}
+\end{frame}
+
+\section {Was ist Javascript}
+\begin{frame}[fragile]{Javascript für die Website}
+\begin {itemize}
+\item Zuerst:  einbinden der Datei die den Code enthält mit:
+\begin{lstlisting}
+<script src="script.js"> </script>
+\end{lstlisting}
+\grqq{script.js} als Datei anlegen
+\end {itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Buttons!}
+\begin {itemize}
+\item Button Element zur HTML Website hinzufügen. 
+\item Name der Funktion die aus der Javascript-Datei ausgeführt werden soll, wenn man auf den Button klickt
+\begin{lstlisting}
+ <button onclick="zeigeName()">
+ Zeige Namen!</button>
+\end{lstlisting}
+\item onClick ist ein Event, bei dessen auftreten die Funktion reagiert
+\end {itemize}
+\end{frame}
+
+
+
+\begin{frame}{Der Mathetest}
+\begin{block}{Aufgabe}
+Lisa macht ein Austauschsemester in Australien. Um f"ur einen Mathetest zu lernen, l"ost sie Rechen-Aufgaben, die ihr eine Kommilitonin diktiert hat. Leider hat die Kommilitonin nicht gesagt, wie die Aufgaben geklammert sind. \\
+Gegeben die Anzahl an Faktoren, wie viele verschiedene Wege gibt es diese zu klammern?
+\end{block}
+Beispiel:
+\begin{itemize}
+\item Gegeben: $\lbrace a, b, c, d \rbrace$
+\item Gesucht: M"oglichkeiten f"ur Klammerung
+\item $ a \left( b \left( c d \right) \right) $ , $\left( a b \right) \left( c d \right) $ , $\left( \left( a b \right) c \right) d$ , $\left( a \left( b  c \right) \right) d $ , $ a \left( \left( b  c \right) d \right) $
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
