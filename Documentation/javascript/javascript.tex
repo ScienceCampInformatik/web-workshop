@@ -172,21 +172,87 @@
 \end {itemize}
 \end{frame}
 
-
-
-\begin{frame}{Der Mathetest}
-\begin{block}{Aufgabe}
-Lisa macht ein Austauschsemester in Australien. Um f"ur einen Mathetest zu lernen, l"ost sie Rechen-Aufgaben, die ihr eine Kommilitonin diktiert hat. Leider hat die Kommilitonin nicht gesagt, wie die Aufgaben geklammert sind. \\
-Gegeben die Anzahl an Faktoren, wie viele verschiedene Wege gibt es diese zu klammern?
-\end{block}
-Beispiel:
-\begin{itemize}
-\item Gegeben: $\lbrace a, b, c, d \rbrace$
-\item Gesucht: M"oglichkeiten f"ur Klammerung
-\item $ a \left( b \left( c d \right) \right) $ , $\left( a b \right) \left( c d \right) $ , $\left( \left( a b \right) c \right) d$ , $\left( a \left( b  c \right) \right) d $ , $ a \left( \left( b  c \right) d \right) $
-\end{itemize}
+\begin{frame}[fragile]{Buttons! - Die was tun}
+\begin {itemize}
+\item Funktion muss nun noch in Javascript implementiert werden
+\item Allgemeines Funktionsaufbau:
+\begin{lstlisting}
+function funktionsName(){
+	//hier kommen die Befehle hin
+	// "//" am Anfang der Zeile markiert Kommentar
+}
+\end{lstlisting}
+\end {itemize}
 \end{frame}
 
 
 
+
+\begin{frame}[fragile]{Buttons! - Die was tun!}
+\begin {itemize}
+\item Die Funktion aus dem Button-Element muss definiert werden
+\item  mit window.alert Popup angezeigen
+\item In den Klammern in Anführungszeichen Text der angezeigt werden soll definieren
+\begin{lstlisting}
+function zeigeName(){
+window.alert("Hallo!");
+}
+\end{lstlisting}
+\end {itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Aufgabe - Buttons! - Die was tun!}
+\begin {itemize}
+\item Fügt eurer Website einen Button hinzu
+\item Lasst eure Website euch Grüßen, wenn ihr auf den Button klickt
+\end {itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Variablen in Javascript}
+\begin {itemize}
+\item Im Code k"onnen Daten gespeichert werden
+\item Texte, Zahlen, Kommazahlen, Objekte
+\item hei"st: Variablen! 
+\item K"onnen in Funktionen oder einfach au"serhalb stehen ($\Rightarrow$global!)
+\begin{lstlisting}
+var name = "Lotti";
+var alter = 23;
+var pi = "3,14159";
+\end{lstlisting}
+\end {itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Variablen und Buttons}
+\begin {itemize}
+\item Der Text vom Button kann auch in einer Variable gespeichert werden
+\begin{lstlisting}
+var name = "Lotti";
+function zeigeName(){
+	window.alert("Hallo " + name);
+}
+\end{lstlisting}
+\end {itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Variablen und Buttons}
+\begin {itemize}
+\item Die Variable kann durch einen anderen Button verändert werden
+\item Dazu: neuer Button (im HTML)!
+\begin{lstlisting}
+<button onclick="aendereName()">
+Ändere den Namen</button>
+\end{lstlisting}
+\item und die Funktion in Javascript 
+\begin{lstlisting}
+function aendereName(){
+name = prompt("Aendere den Namen!","Gib hier Namen an");
+}
+\end{lstlisting}
+\item prompt macht ein Popup in dem man einen Text eingeben kann
+\end {itemize}
+\end{frame}
 \end{document}
