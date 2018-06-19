@@ -142,40 +142,40 @@
 \section {Was ist Javascript}
 \begin{frame}{Was ist Javascript}
 \begin {itemize}
-\item Programmiersprache für Aktionen in Websiten
+\item Programmiersprache Websites
 \item Einfach zu lernen 
-\item Wird direkt beim Aufruf in Maschinensprache übersetzt und direkt ausgeführt
+\item Wird direkt beim Aufruf in Maschinensprache übersetzt und ausgeführt
 \end {itemize}
 \end{frame}
 
 \section {Was ist Javascript}
 \begin{frame}[fragile]{Javascript für die Website}
 \begin {itemize}
-\item Zuerst:  einbinden der Datei die den Code enthält mit:
+\item Zuerst:  einbinden der Datei die den Code enth"alt mit:
 \begin{lstlisting}
 <script src="script.js"> </script>
 \end{lstlisting}
-\grqq{script.js} als Datei anlegen
+\glqq script.js\grqq als Datei anlegen
 \end {itemize}
 \end{frame}
 
 
 \begin{frame}[fragile]{Buttons!}
 \begin {itemize}
-\item Button Element zur HTML Website hinzufügen. 
-\item Name der Funktion die aus der Javascript-Datei ausgeführt werden soll, wenn man auf den Button klickt
+\item Button Element zur HTML Website hinzuf"ugen. 
+\item Name der Funktion aus der Javascript-Datei
 \begin{lstlisting}
  <button onclick="zeigeName()">
  Zeige Namen!</button>
 \end{lstlisting}
-\item onClick ist ein Event, bei dessen auftreten die Funktion reagiert
+\item onClick ruft Funktion nach Event \glqq auf Button geklickt\grqq auf
 \end {itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Buttons! - Die was tun}
+\begin{frame}[fragile]{Buttons! - Die was tun!}
 \begin {itemize}
-\item Funktion muss nun noch in Javascript implementiert werden
-\item Allgemeines Funktionsaufbau:
+\item Funktion muss noch in Javascript implementiert werden
+\item Allgemeiner Funktionsaufbau:
 \begin{lstlisting}
 function funktionsName(){
 	//hier kommen die Befehle hin
@@ -191,8 +191,8 @@ function funktionsName(){
 \begin{frame}[fragile]{Buttons! - Die was tun!}
 \begin {itemize}
 \item Die Funktion aus dem Button-Element muss definiert werden
-\item  mit window.alert Popup angezeigen
-\item In den Klammern in Anführungszeichen Text der angezeigt werden soll definieren
+\item  Mit window.alert Popup angezeigen
+\item In den Klammern in Anf"uhrungszeichen Text definieren
 \begin{lstlisting}
 function zeigeName(){
 window.alert("Hallo!");
@@ -205,14 +205,14 @@ window.alert("Hallo!");
 
 \begin{frame}[fragile]{Aufgabe - Buttons! - Die was tun!}
 \begin {itemize}
-\item Fügt eurer Website einen Button hinzu
-\item Lasst eure Website euch Grüßen, wenn ihr auf den Button klickt
+\item F"ugt eurer Website einen Button hinzu
+\item Lasst eure Website euch Grü"sen, wenn ihr auf den Button klickt
 \end {itemize}
 \end{frame}
 
 
 \begin{frame}[fragile]{Variablen in Javascript}
-\begin {itemize}
+\begin{itemize}
 \item Im Code k"onnen Daten gespeichert werden
 \item Texte, Zahlen, Kommazahlen, Objekte
 \item hei"st: Variablen! 
@@ -222,37 +222,336 @@ var name = "Lotti";
 var alter = 23;
 var pi = "3,14159";
 \end{lstlisting}
-\end {itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Variablen und Buttons}
-\begin {itemize}
-\item Der Text vom Button kann auch in einer Variable gespeichert werden
+\begin{itemize}
+\item Text vom Button kann auch in einer Variable gespeichert werden
 \begin{lstlisting}
 var name = "Lotti";
 function zeigeName(){
 	window.alert("Hallo " + name);
 }
 \end{lstlisting}
-\end {itemize}
+\end{itemize}
 \end{frame}
 
 
 \begin{frame}[fragile]{Variablen und Buttons}
-\begin {itemize}
-\item Die Variable kann durch einen anderen Button verändert werden
+\begin{itemize}
+\item Variable kann durch einen anderen Button ver"andert werden
 \item Dazu: neuer Button (im HTML)!
 \begin{lstlisting}
 <button onclick="aendereName()">
 Ändere den Namen</button>
 \end{lstlisting}
-\item und die Funktion in Javascript 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Variablen und Buttons}
+\begin{itemize}
+	\item und die Funktion in Javascript 
+	\begin{lstlisting}
+	function aendereName(){
+	name = prompt("Aendere den Namen!","Gib hier Namen an");
+	}
+	\end{lstlisting}
+	\item prompt macht ein Popup in dem man einen Text eingeben kann
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Inhalt der Website "andern}
+\begin{itemize}
+\item HTML Elementen können IDs haben
+\item aber auch anders wiedergefunden werden
 \begin{lstlisting}
-function aendereName(){
-name = prompt("Aendere den Namen!","Gib hier Namen an");
+	<p id="name"> </p>
+\end{lstlisting}
+\item in Javascript kann über document.getElementById auf das Element zugegriffen werden
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Inhalt der Website ändern}
+\begin{itemize}
+	\item aus dem Javascript code k"onnen Eigenschaften wie Text, Styling ... ver"andert
+	\begin{lstlisting}
+	document.getElementById("name").textContent = name;
+	\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Aufgabe}
+\begin{itemize}
+	\item F"ugt eurer Website ein Element hinzu, in der Name, der zuletzt eingegeben wurde angezeigt wird. 
+	\item In Javascript: sobald der Name geändert wird soll dies in dem neuen Element angezeigt werden
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Javascript Kleinigkeiten}
+\begin{itemize}
+	\item Listen (= Arrays in JS) sind Sammlungen an Objekten,Texten,Zahlen....
+	\begin{lstlisting}
+	var x = 10;
+	x++; // <=> x = x+1 
+	x--; // <=> x = x-1
+	console.log("Hallo"); //Gibt Hallo auf der Konsole, Konsole sieht man bei f12 im Browser
+	\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Listen und Schleifen}
+\begin{itemize}
+		\begin{lstlisting}
+	var list = []; // [] zeigt leere Liste
+	var list2 = [1,5,10]; // Liste aus 1,5,10
+	\end{lstlisting}
+	\item Elemente einer Liste hinzuf"ugen: 
+		\begin{lstlisting}
+	var list = []; // [] zeigt leere Liste
+	list.push(15); //liste enthält nun das Element 15
+	\end{lstlisting}	
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Listen und Schleifen}
+\begin{itemize}
+	\item Zugriff auf Listen in Javascript über Index
+	\begin{lstlisting}
+	var list = [10,20,30];
+	list[0] // = 10, Index beginnt bei 0!
+	list.length // Länge der Liste, höchster Index +1 
+	\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Listen und Schleifen}
+\begin{itemize}
+\item Schleifen wenn etwas mehrmals getahn werden soll
+\item While schleife = \glqq Mach solange eine Bedingung erfüllt ist\grqq
+\begin{lstlisting}
+var x = 1;
+while(x < 10){
+	console.log("x");
+	x++ // das gleiche wie x = x+1;
 }
 \end{lstlisting}
-\item prompt macht ein Popup in dem man einen Text eingeben kann
-\end {itemize}
+\item Was passiert? 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Listen und Schleifen}
+\begin{itemize}
+	\item Kann auch alle Elemente einer Liste durchgehen
+	\begin{lstlisting}
+	var list = ["Hallo ", "Science ", "Camp"];
+	for(var text in list){
+		console.log(text);
+	}
+	\end{lstlisting}
+	\item Was passiert? 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Aufgabe}
+\begin{itemize}
+	\item F"ugt einen Button hinzu, der ein Popup "offnet, mit dem man ein Lieblingsessen eingeben kann.
+	\item speichert das Gericht in einer Liste.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Aufgabe - L"osung}
+\begin{itemize}
+ 	\item in HTML:
+ 	\begin{lstlisting}
+    <button onclick="essenHinzufuegen()"> Füge ein Essen hinzu</button>
+ 	\end{lstlisting}
+ 	\item in Javascript:
+ 	\begin{lstlisting}
+ 	var list = [];
+ 	function essenHinzufuegen(){
+ 	var essen = prompt("Gebe ein Essen ein, das du gerne isst.", "Pizza!");
+ 	list.push(essen);
+ 	//zeigeEssen();
+ 	}
+ 	\end{lstlisting}
+ 	\item n"achster Schritt: Liste der Lieblingsessen auf der Seite anzeigen. 
+ 	\item Jemand eine Idee wie?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Zeige Essensliste an!}
+\begin{itemize}
+	\item in HTML leeres Aufz"ahlungselement:
+	\begin{lstlisting}
+		  <ul id ="essen"></ul>
+	\end{lstlisting}
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{Zeige Essensliste an!}
+\begin{itemize}
+	\item In Javascript: 
+	\begin{lstlisting}
+	function zeigeEssen() {
+	var ul = document.getElementById("essen");
+	while( ul.firstChild ){
+		ul.removeChild( ul.firstChild );
+	}
+	//...
+	}
+	\end{lstlisting}
+	\item l"oscht das erste Kind der Aufz"ahlung bis keines mehr da ist
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Zeige Essensliste an!}
+\begin{itemize}
+	\item Aufz"ahlungselemente erzeugen in Javascript: 
+	\begin{lstlisting}
+	var li = document.createElement("li");
+	li.appendChild(document.createTextNode("Text"));
+	ul.appendChild(li);
+	\end{lstlisting}
+	\item Erzeugt einen Punkt der Aufzählung und f"ullt den mit Text
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Aufgabe}
+\begin{itemize}
+	\item Implementiert die Funktion zeigeEssen
+	\item ruft sie jedesmal auf, wenn ein essen der Liste hinzugefügt wird.
+	\item Fügt einen Button hinzu, der die Liste leeren soll (Lösche Essen)
+	\item Implementiert die Funktion dazu
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{L"osung}
+		\begin{lstlisting}
+			function zeigeEssen() {
+			var ul = document.getElementById("essen");
+			while( ul.firstChild ){
+				ul.removeChild( ul.firstChild );
+			}
+			for(var essen in list ){
+				var li = document.createElement("li");
+				li.appendChild(document.createTextNode
+				(list[essen]));
+				ul.appendChild(li);
+			}
+			}
+		\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{L"osung}
+		\begin{lstlisting}
+			function essenHinzufuegen(){
+			var essen = prompt("Gebe ein Essen ein, das du gerne isst.", "Pizza!");
+			list.push(essen);
+			zeigeEssen();
+			}
+		\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{L"osung}
+\begin{itemize}
+	\item im HTML: 
+	\begin{lstlisting}
+	<button onclick="loescheEssen()">Löschen</button>
+	\end{lstlisting}
+	\item im Javascript:
+	\begin{lstlisting}
+	function loescheEssen(){
+		list = [];
+		zeigeEssen();
+	}
+	\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dropdown Menus und CSS-Manipulation}
+\begin{itemize}
+	\item Dropdown-Menu um Hintergrund auszusuchen
+	\item Man braucht: Dropdownmenu, ein paar Bilder/Hintergr"unde und eine Javascript-Funktion 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dropdown Menus}
+\begin{itemize}
+	\item onChange: Funktion wird bei Neuauswahl aufgerufen
+	\item id um den Wert draus zu lesen
+	\item option-Kind-Element zeigt Optionen
+
+\begin{lstlisting}
+	<select onchange="aendereHintergrund()"  id="hintergrundWechsler">
+		<option value="blumen">Blumen</option>
+		<option value="normal">Normal</option>
+	</select>
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+%hier mehr? oder erklärt lena das allgemein?
+\begin{frame}[fragile]{Hinterg"unde}
+\begin{itemize}
+	\item m"ussen als Bilddateien in Ordner bilder/hintergrund
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hinterg"unde}
+\begin{itemize}
+	\item Javascript:
+	\begin{lstlisting}
+function aendereHintergrund(){
+	var wahl = document.getElementById("hintergrundWechsler").value
+	//...
+}
+	\end{lstlisting}
+	
+\end{itemize}
+\end{frame}
+
+%TODO: switch case???
+\begin{frame}[fragile]{Fallunterscheidung in Javascript}
+\begin{itemize}
+	\item \glqq Wenn Bedingung1 gilt mache A, sonst B\grqq
+	\item === vergleicht auf gleichen Inhalt
+	\begin{lstlisting}
+	text = "Hallo";
+	if(text === "Hallo"){
+		console.log(text);
+	}else{
+		console.log("kein Hallo!");
+	}
+	\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hintergrund "andern }
+\begin{itemize}
+	\item \glqq Wenn Bedingung1 gilt mache A, sonst B\grqq
+	\item === vergleicht auf gleichen Inhalt
+	\begin{lstlisting}
+	if(wahl === "blumen"){
+		document.querySelector("body").style.backgroundImage = "url(bilder/hintergrund/blumen.png)";
+		document.querySelector("body").style.backgroundSize = "auto";
+	}else{
+		document.querySelector("body").style.backgroundImage = "url(bilder/hintergrund/pink-blau.png)";
+		document.querySelector("body").style.backgroundSize = "cover";
+	}
+	\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Aufgabe: Hintergrund "andern }
+\begin{itemize}
+	\item F"ugt Website Hintergrundwechsler hinzu
+	\item Implementiert Funktion
+	\item Bonus: F"ugt mehr Hintergründe hinzu!
+\end{itemize}
 \end{frame}
 \end{document}
