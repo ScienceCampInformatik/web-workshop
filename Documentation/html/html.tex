@@ -1,0 +1,406 @@
+%% LaTeX-Beamer template for KIT design
+%% by Erik Burger, Christian Hammer
+%% title picture by Klaus Krogmann
+%%
+%% version 2.1
+%%
+%% mostly compatible to KIT corporate design v2.0
+%% http://intranet.kit.edu/gestaltungsrichtlinien.php
+%%
+%% Problems, bugs and comments to
+%% burger@kit.edu
+
+\documentclass[18pt]{beamer}
+
+
+%% SLIDE FORMAT
+
+% use 'beamerthemekit' for standard 4:3 ratio
+% for widescreen slides (16:9), use 'beamerthemekitwide'
+\usepackage{listings}
+\usepackage{templates/beamerthemekit}
+% \usepackage{templates/beamerthemekitwide}
+\usepackage{color}
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
+\usepackage{upquote}
+\lstdefinelanguage{JavaScript}{
+	morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+	morecomment=[s]{/*}{*/},
+	morecomment=[l]//,
+	morestring=[b]",
+	morestring=[b]'
+}
+
+\lstdefinelanguage{HTML5}{
+	language=html,
+	sensitive=true, 
+	alsoletter={<>=-},
+	otherkeywords={
+		% HTML tags
+		<html>, <head>, <title>, </title>, <meta, />, </head>, <body>,
+		<canvas, \/canvas>, <script>, </script>, </body>, </html>, <!, html>, <style>, </style>, ><
+	},  
+	ndkeywords={
+		% General
+		=,
+		% HTML attributes
+		charset=, id=, width=, height=,
+		% CSS properties
+		border:, transform:, -moz-transform:, transition-duration:, transition-property:, transition-timing-function:
+	},  
+	morecomment=[s]{<!--}{-->},
+	tag=[s]
+}
+
+\lstset{%
+	% Basic design
+	backgroundcolor=\color{editorGray},
+	basicstyle={\small\ttfamily},   
+	frame=l,
+	% Line numbers
+	xleftmargin={0.75cm},
+	numbers=left,
+	stepnumber=1,
+	firstnumber=1,
+	numberfirstline=true,
+	% Code design   
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{darkgray}\ttfamily,
+	ndkeywordstyle=\color{editorGreen}\bfseries,
+	stringstyle=\color{editorOcher},
+	% Code
+	language=HTML5,
+	alsolanguage=JavaScript,
+	alsodigit={.:;},
+	tabsize=2,
+	showtabs=false,
+	showspaces=false,
+	showstringspaces=false,
+	extendedchars=true,
+	breaklines=true,        
+	% Support for German umlauts
+	literate=%
+	{Ã–}{{\"O}}1
+	{Ã„}{{\"A}}1
+	{Ãœ}{{\"U}}1
+	{ÃŸ}{{\ss}}1
+	{Ã¼}{{\"u}}1
+	{Ã¤}{{\"a}}1
+	{Ã¶}{{\"o}}1
+}
+%% TITLE PICTURE
+
+% if a custom picture is to be used on the title page, copy it into the 'logos'
+% directory, in the line below, replace 'mypicture' with the 
+% filename (without extension) and uncomment the following line
+% (picture proportions: 63 : 20 for standard, 169 : 40 for wide
+% *.eps format if you use latex+dvips+ps2pdf, 
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+\titleimage{logologo}
+
+%% TITLE LOGO
+
+% for a custom logo on the front page, copy your file into the 'logos'
+% directory, insert the filename in the line below and uncomment it
+
+%\titlelogo{mylogo}
+
+% (*.eps format if you use latex+dvips+ps2pdf,
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+%% TikZ INTEGRATION
+
+% use these packages for PCM symbols and UML classes
+% \usepackage{templates/tikzkit}
+% \usepackage{templates/tikzuml}
+\usepackage{hyperref}
+\usepackage[latin1]{inputenc}
+\usepackage{xcolor}
+
+% the presentation starts here
+
+\title[HTML Basics]{HTML Basics}
+%\subtitle{Something for XYZ 2009}
+\author{Lena, Kristin, Charlotte}
+
+% Bibliography
+
+\usepackage[citestyle=authoryear,bibstyle=numeric,hyperref,backend=biber]{biblatex}
+\addbibresource{templates/example.bib}
+\bibhang1em
+
+\begin{document}
+
+% change the following line to "ngerman" for German style date and logos
+\selectlanguage{ngerman}
+
+%title page
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section {Tagesziel}
+\begin{frame}[fragile]{Tagesziel}
+\begin {itemize}
+\item Das soll am Tagesende entstanden sein: \url{file:///C:/Users/Kristin/Documents/ungeordneter%20Unikram/web-workshop-master(3)/web-workshop-master/Tag1Ergebnis/Workshop/index.html}
+\end {itemize}
+\end{frame}
+
+\section {Wochenziel}
+\begin{frame}[fragile]{Wochenziel}
+
+%\begin{lstlisting}
+%<script src="script.js"> </script>
+%\end{lstlisting}
+
+\end{frame}
+
+\section{Allgemeiner Aufbau}
+\begin{frame}[fragile]{Was ist HTML?}
+Ein Beispiel:
+	\begin{lstlisting}
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<title>Page Title</title>
+	</head>
+	
+	<body>
+	<h1>My First Heading</h1>
+	<p>My first paragraph.</p>
+	</body>
+	</html> 
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Was ist HTML?}
+\begin {itemize}
+\item ausgeschrieben: Hyper Text Markup Language (deutsch: Hypertext-Auszeichnungssprache)
+\item beschreibt die Struktur von Webseiten in einer maschinenlesbaren Sprache
+\item wichtig beim Arbeiten mit HTML sind Tags 
+\end {itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Allgemeiner Aufbau}
+\fcolorbox{red}{white}{\parbox{\linewidth}{\begin{center}Wichtig: Solange wir HTML-Code schreiben, verwenden wir Tags.\end{center}}} \\
+\begin{center}Jeder Tag ist wie folgt aufgebaut:\end{center}
+\begin{lstlisting}
+	<tagname>Inhalt des Tags...</tagname>
+\end{lstlisting}
+\fcolorbox{red}{white}{\parbox{\linewidth}{\begin{center}Wichtig: Jeder Tag, der ge\"offnet wird, muss wieder geschlossen werden außer $<$!DOCTYPE html$>$!  (...)\end{center}}}
+\end{frame}
+
+%\begin{frame}[fragile]{Allgemeiner Aufbau}
+%Das Ganze sieht dann beispielsweise so aus:
+%\begin{lstlisting}
+%	<!DOCTYPE html>
+%	<head>
+%	<title>Page Title</title>
+%	</head>
+%	
+%	<body>
+%	<h1>My First Heading</h1>
+%	<p>My first paragraph.</p>
+%	</body>
+%	</html> 
+%\end{lstlisting}
+%\end{frame}
+
+\begin{frame}[fragile]{Allgemeiner Aufbau}
+\fcolorbox{red}{white}{\parbox{\linewidth}{\begin{center}Wichtig: Jeder HTML Code hat das gleiche Grundger\"ust mit grundlegenden Elementen!\end{center}}}
+\begin {itemize}
+\item Ihr beginnt immer mit dem Tag $<$!DOCTYPE html$>$ (...)
+\item Danach $<$html$>$ (...)
+\item Im $<$head$>$, dem Kopf der Datei, speichert ihr Metadaten (...)
+\item Die Website braucht nat\"urlich auch einen Titel, den ihr mit $<$title$>$ vergeben k\"onnt.
+\item Und zum Schluss kommt noch der K\"orper des Ganzen mit dem Tag $<$body$>$ (...)
+\end {itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Allgemeiner Aufbau}
+Folgende zwei Tags werden im $<$body$>$ oft gebraucht:
+\begin{itemize}
+\item Das Element $<$h1$>$ definiert immer gro${\ss}$e \"Uberschriften und
+\item das Element $<$p$>$ leitet immer Paragraphen ein.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Allgemeine Aufbau}
+Übersichtliche Darstellung Grundgerüst
+\end{frame}
+
+\begin{frame}[fragile]{Allgemeiner Aufbau}
+	Aufgabe: Erstelle deine erste HTML Website (Erinnerung: Grundgerüst). Binde dabei auch eine Überschrift und einen Paragraphen ein. \\
+	(Inhalt schon vorgeben?) \\
+	(Atom öffnen, kurz erklären!)
+\end{frame}
+
+\begin{frame}[fragile]{Allgemeiner Aufbau}
+	Lösung
+\end{frame}
+
+\section{Kommentare}
+\begin{frame}[fragile]{Kommentare}
+nlkn
+\end{frame}
+
+\section{Überschriften}
+\begin{frame}[fragile]{Überschriften}
+\begin{itemize}
+\item F\"ur \"Uberschriften verwendet ihr die Tags $<$h1$>$ bis $<$h6$>$:
+\begin{lstlisting}
+	<h1>Überschrift</h1>
+\end{lstlisting}
+\item Mit $<$h1$>$ markiert ihr die wichtigste Überschrift, mit $<$h6$>$ die am wenigsten Wichtigste.
+%\item Dickere \"Uberschriften könnt ihr erstellen in dem ihr ein den Tag wie folgt erweitert:(das Style-Attribut font-size verwendet) zu Styles verschieben
+%\begin{lstlisting}
+%<h1 style="font-size:60px;">Überschrift</h1>
+%\end{lstlisting} 
+\item Um eure Website noch übersichtlicher zu gestalten, könnt ihr waagerechte Linien verwenden mit dem Tag $<$hr$>$. So könnt ihr Text besser separieren.
+\item Wie ihr Überschriften und Texte kreativer gestalten könnt, kommt später noch.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Überschriften}
+Aufgabe: Fügt in eurer Website die Überschrift $"$Willkommen$"$ ein. (vorher schon?)
+\end{frame}
+
+\begin{frame}[fragile]{Überschriften}
+Lösung
+\end{frame}
+
+\section{Paragraphen}
+\begin{frame}[fragile]{Paragraphen}
+\begin{itemize}
+\item Für Paragraphen verwendet ihr den Tag $<$p$>$.
+\begin{lstlisting}
+	<p>Paragraph</p>
+\end{lstlisting}
+\item Einen Zeilenumbruch könnt ihr mit $<$br$>$ herstellen.
+\begin{lstlisting}
+	<p>Zeilen-<br>umbruch</p>
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Paragraphen}
+Aufgabe: Binde deinen ersten Paragraphen in die Website ein, in dem ihr ganz kurz etwas zu eurer Website schreibt.
+\end{frame}
+
+\begin{frame}[fragile]{Paragraphen}
+Lösung
+\end{frame}
+
+\section{Styles}
+\begin{frame}[fragile]{Styles}
+Bedeutung Attribut \\
+Auch das Style-Attribut ist immer gleich aufgebaut:
+\begin{lstlisting}
+	<tagname style="eigenschaft:wert;">
+\end{lstlisting}
+Verweis CSS?
+\end{frame}
+
+\begin{frame}[fragile]{Styles}
+Mit dem Style-Attribut könnt ihr jetzt unterschiedliche Elemente kreativer gestalten:
+\begin{itemize}
+\item die Hintergrundfarbe:
+\begin{lstlisting}
+<body style="backround-color:powderblue;">
+	<h1>This is a heading</h1>
+	<p>This is a paragraph</p>
+</body>
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Styles}
+\begin{itemize}
+\item die Textfarbe:
+\begin{lstlisting}
+<body>
+	<h1 style="color:#006699;">This is a heading</h1>
+	<p style="color:#006699;">This is a paragraph</p>
+</body>	
+\end{lstlisting}
+\item die Schriftart:
+\begin{lstlisting}
+<body>
+	<h1 style="font-family:verdana;">This is a heading</h1>
+	<p> style="font-family:arial;">This is a paragraph</p>
+</body>
+\end{lstlisting}
+\end{itemize}	
+\end{frame}
+
+\begin{frame}[fragile]{Styles}
+\begin{itemize}
+\item die Schriftgröße:
+\item Positionierung des Textes: 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Styles}
+Aufgabe: Styles
+\end{frame}
+
+\begin{frame}[fragile]{Styles}
+Lösung
+\end{frame}
+
+\section{Links}
+\begin{frame}[fragile]{Links}
+Inhalt...
+\end{frame}
+
+\begin{frame}[fragile]{Links}
+Aufgabe: Links
+\end{frame}
+
+\begin{frame}[fragile]{Links}
+Lösung
+\end{frame}
+
+\section{Bilder}
+\begin{frame}[fragile]{Bilder}
+Inhalt...
+\end{frame}
+
+\begin{frame}[fragile]{Bilder}
+Aufgabe: Bilder
+\end{frame}
+
+\begin{frame}[fragile]{Bilder}
+Lösung
+\end{frame}
+
+\section{Buttons}
+\begin{frame}[fragile]{Buttons}
+Inhalt...
+\end{frame}
+
+\begin{frame}[fragile]{Buttons}
+Aufgabe: Buttons
+\end{frame}
+
+\begin{frame}[fragile]{Buttons}
+Lösung
+\end{frame}
+
+\section{Listen}
+\begin{frame}[fragile]{Listen}
+Inhalt...
+\end{frame}
+
+\begin{frame}[fragile]{Listen}
+Aufgabe: Listen
+\end{frame}
+
+\begin{frame}[fragile]{Listen}
+Lösung
+\end{frame}
+
+\end{document}
