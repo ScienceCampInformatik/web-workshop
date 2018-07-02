@@ -18,6 +18,7 @@
 % use 'beamerthemekit' for standard 4:3 ratio
 % for widescreen slides (16:9), use 'beamerthemekitwide'
 \usepackage{listings}
+\lstset{escapeinside={(*@}{@*)}}
 \usepackage{templates/beamerthemekit}
 % \usepackage{templates/beamerthemekitwide}
 \usepackage{color}
@@ -99,7 +100,7 @@
 % *.eps format if you use latex+dvips+ps2pdf, 
 % *.jpg/*.png/*.pdf if you use pdflatex)
 
-\titleimage{logologo}
+\titleimage{logologo2}
 
 %% TITLE LOGO
 
@@ -145,7 +146,7 @@
 \section {Tagesziel}
 \begin{frame}[fragile]{Tagesziel}
 \begin {itemize}
-\item Das soll am Tagesende entstanden sein: \url{file:///C:/Users/Kristin/Documents/ungeordneter%20Unikram/web-workshop-master(3)/web-workshop-master/Tag1Ergebnis/Workshop/index.html}
+\item Das werdet ihr am Tagesende geschafft haben: \url{file:///C:/Users/Kristin/Documents/ungeordneter%20Unikram/web-workshop-master(3)/web-workshop-master/Tag1Ergebnis/Workshop/index.html}
 \end {itemize}
 \end{frame}
 
@@ -161,94 +162,57 @@
 \section{Allgemeiner Aufbau}
 \begin{frame}[fragile]{Was ist HTML?}
 Ein Beispiel:
-	\begin{lstlisting}
-	<!DOCTYPE html>
-	<html>
-	<head>
+\begin{lstlisting}
+<!DOCTYPE html>
+<html>
+<head>
 	<title>Page Title</title>
-	</head>
+</head>
 	
-	<body>
+<body>
 	<h1>My First Heading</h1>
 	<p>My first paragraph.</p>
-	</body>
-	</html> 
-	\end{lstlisting}
+</body>
+</html> 
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Was ist HTML?}
 \begin {itemize}
 \item ausgeschrieben: Hyper Text Markup Language (deutsch: Hypertext-Auszeichnungssprache)
 \item beschreibt die Struktur von Webseiten in einer maschinenlesbaren Sprache
-\item wichtig beim Arbeiten mit HTML sind Tags 
 \end {itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Allgemeiner Aufbau}
 \fcolorbox{red}{white}{\parbox{\linewidth}{\begin{center}Wichtig: Solange wir HTML-Code schreiben, verwenden wir Tags.\end{center}}} \\
+\pause
 \begin{center}Jeder Tag ist wie folgt aufgebaut:\end{center}
 \begin{lstlisting}
 	<tagname>Inhalt des Tags...</tagname>
 \end{lstlisting}
+\pause
 \fcolorbox{red}{white}{\parbox{\linewidth}{\begin{center}Wichtig: Jeder Tag, der ge\"offnet wird, muss wieder geschlossen werden außer $<$!DOCTYPE html$>$!  (...)\end{center}}}
 \end{frame}
 
-%\begin{frame}[fragile]{Allgemeiner Aufbau}
-%Das Ganze sieht dann beispielsweise so aus:
-%\begin{lstlisting}
-%	<!DOCTYPE html>
-%	<head>
-%	<title>Page Title</title>
-%	</head>
-%	
-%	<body>
-%	<h1>My First Heading</h1>
-%	<p>My first paragraph.</p>
-%	</body>
-%	</html> 
-%\end{lstlisting}
-%\end{frame}
-
 \begin{frame}[fragile]{Allgemeiner Aufbau}
 \fcolorbox{red}{white}{\parbox{\linewidth}{\begin{center}Wichtig: Jeder HTML Code hat das gleiche Grundger\"ust mit grundlegenden Elementen!\end{center}}}
-\begin {itemize}
-\item Ihr beginnt immer mit dem Tag $<$!DOCTYPE html$>$ (...)
-\item Danach $<$html$>$ (...)
-\item Im $<$head$>$, dem Kopf der Datei, speichert ihr Metadaten (...)
-\item Die Website braucht nat\"urlich auch einen Titel, den ihr mit $<$title$>$ vergeben k\"onnt.
-\item Und zum Schluss kommt noch der K\"orper des Ganzen mit dem Tag $<$body$>$ (...)
-\end {itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Allgemeiner Aufbau}
-Folgende zwei Tags werden im $<$body$>$ oft gebraucht:
-\begin{itemize}
-\item Das Element $<$h1$>$ definiert immer gro${\ss}$e \"Uberschriften und
-\item das Element $<$p$>$ leitet immer Paragraphen ein.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Allgemeine Aufbau}
-Übersichtliche Darstellung Grundgerüst
+\begin{figure}
+	\centering
+	\includegraphics[width=1\textwidth]{structure2.png}
+\end{figure}
 \end{frame}
 
 \begin{frame}[fragile]{Allgemeiner Aufbau}
-	Aufgabe: Erstelle deine erste HTML Website (Erinnerung: Grundgerüst). Binde dabei auch eine Überschrift und einen Paragraphen ein. \\
-	(Inhalt schon vorgeben?) \\
-	(Atom öffnen, kurz erklären!)
-\end{frame}
-
-\begin{frame}[fragile]{Allgemeiner Aufbau}
-	Lösung
-\end{frame}
-
-\section{Kommentare}
-\begin{frame}[fragile]{Kommentare}
-nlkn
+	\textbf{Jetzt ist es endlich soweit:} Erstellt eure erste eigene Website mit einem Head, einem Titel und einem Body! \\
+	Erinnerung: Grundgerüst
 \end{frame}
 
 \section{Überschriften}
-\begin{frame}[fragile]{Überschriften}
+\begin{frame}[fragile]{Überschriften und Paragraphen}
 \begin{itemize}
 \item F\"ur \"Uberschriften verwendet ihr die Tags $<$h1$>$ bis $<$h6$>$:
 \begin{lstlisting}
@@ -259,26 +223,17 @@ nlkn
 %\begin{lstlisting}
 %<h1 style="font-size:60px;">Überschrift</h1>
 %\end{lstlisting} 
-\item Um eure Website noch übersichtlicher zu gestalten, könnt ihr waagerechte Linien verwenden mit dem Tag $<$hr$>$. So könnt ihr Text besser separieren.
-\item Wie ihr Überschriften und Texte kreativer gestalten könnt, kommt später noch.
+\item Nicht schön? Nicht schlimm, das gestalten wir später noch!
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Überschriften}
-Aufgabe: Fügt in eurer Website die Überschrift $"$Willkommen$"$ ein. (vorher schon?)
-\end{frame}
-
-\begin{frame}[fragile]{Überschriften}
-Lösung
-\end{frame}
-
-\section{Paragraphen}
-\begin{frame}[fragile]{Paragraphen}
+\begin{frame}[fragile]{Überschriften und Paragraphen}
 \begin{itemize}
 \item Für Paragraphen verwendet ihr den Tag $<$p$>$.
 \begin{lstlisting}
 	<p>Paragraph</p>
 \end{lstlisting}
+\pause
 \item Einen Zeilenumbruch könnt ihr mit $<$br$>$ herstellen.
 \begin{lstlisting}
 	<p>Zeilen-<br>umbruch</p>
@@ -286,26 +241,38 @@ Lösung
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Paragraphen}
-Aufgabe: Binde deinen ersten Paragraphen in die Website ein, in dem ihr ganz kurz etwas zu eurer Website schreibt.
+\begin{frame}[fragile]{Überschriften und Paragraphen}
+\textbf{Die Webseite bekommt endlich ihre ersten Elemente!} \\
+Fügt eure erste Überschrift in eure Website ein und schreibt direkt danach einen kleinen Paragraphen zu eurer Webseite.
 \end{frame}
 
-\begin{frame}[fragile]{Paragraphen}
-Lösung
+\section{Kommentare}
+\begin{frame}[fragile]{Kommentare}
+Um die Übersicht zu behalten, sind manchmal Kommentare sehr hilfreich!
+\pause
+\begin{lstlisting}
+<body>
+<h1>Hier steht eure Überschrift</h1>
+<!-- Kommentar --> 
+<p>Hier steht euer Text</p>
+</body>
+\end{lstlisting}
 \end{frame}
 
 \section{Styles}
 \begin{frame}[fragile]{Styles}
-Bedeutung Attribut \\
+\textbf{Jetzt wird endlich alles schöner!} \\
+%Bedeutung Attribut + wichtig?\\
 Auch das Style-Attribut ist immer gleich aufgebaut:
+\pause
 \begin{lstlisting}
 	<tagname style="eigenschaft:wert;">
 \end{lstlisting}
-Verweis CSS?
+%Verweis CSS?
 \end{frame}
 
 \begin{frame}[fragile]{Styles}
-Mit dem Style-Attribut könnt ihr jetzt unterschiedliche Elemente kreativer gestalten:
+Mit dem Style-Attribut könnt ihr jetzt unterschiedliche Elemente kreativer gestalten. Zum Beispiel:
 \begin{itemize}
 \item die Hintergrundfarbe:
 \begin{lstlisting}
@@ -326,6 +293,7 @@ Mit dem Style-Attribut könnt ihr jetzt unterschiedliche Elemente kreativer gesta
 	<p style="color:#006699;">This is a paragraph</p>
 </body>	
 \end{lstlisting}
+\pause
 \item die Schriftart:
 \begin{lstlisting}
 <body>
@@ -339,68 +307,130 @@ Mit dem Style-Attribut könnt ihr jetzt unterschiedliche Elemente kreativer gesta
 \begin{frame}[fragile]{Styles}
 \begin{itemize}
 \item die Schriftgröße:
+\begin{lstlisting}
+<body>
+	<h1 style="font-size:300%;">Das ist eine Überschrift</h1>
+	<p style="font-size:150%;">Das ist ein Paragraph</p>
+</body>	
+\end{lstlisting}
+\pause
 \item Positionierung des Textes: 
+\begin{lstlisting}
+<body>
+	<h1 style="text-align:center;">Das ist eine Überschrift</h1>
+	<p>Das ist ein Paragraph</p>
+</body>
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Styles}
-Aufgabe: Styles
-\end{frame}
-
-\begin{frame}[fragile]{Styles}
-Lösung
+\textbf{Endlich werden wir}
+\color{orange}{k}\color{red}{r}\color{magenta}{e}\color{purple}{a}\color{yellow}{t}\color{cyan}{i}\color{green}{v}\color{black}\textbf{!} \\
+Gestaltet eure Seite mit einer Hintergrund- und unterschiedlichen Textfarben und richtet Texte aus, wie es euch am besten gefällt, aber auch sinnvoll ist.
 \end{frame}
 
 \section{Links}
 \begin{frame}[fragile]{Links}
-Inhalt...
+Nun binden wir Links ein, um von unserer Website zu anderen Internetseiten schnell wechseln zu können.
+\pause
+\\
+Dazu verwenden wir:
+\begin{lstlisting}
+<a href="(*@\textit{url}@*)">link text</a>
+\end{lstlisting}
+\pause
+Als Beispiel:
+\begin{lstlisting}
+<a href="https://www.google.com/">Google!</a>
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Links}
-Aufgabe: Links
-\end{frame}
-
-\begin{frame}[fragile]{Links}
-Lösung
+\textbf{Probiert es einfach selbst!} \\
+Bindet z.B. eure Facebook- oder Instagramseite ein, die Youtube-Startseite und die Zeitung Spiegel Online.
 \end{frame}
 
 \section{Bilder}
 \begin{frame}[fragile]{Bilder}
-Inhalt...
+Als nächstes fügen wir Bilder hinzu mit:
+\begin{lstlisting}
+<img src="url">
+\end{lstlisting}
+\pause
+Was fällt euch auf?
+\pause
+\\
+Als Beispiel:
+\begin{lstlisting}
+<img src="img-beispiel.jpg" alt="Beispielbild">
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Bilder}
-Aufgabe: Bilder
+\begin{center}
+\textbf{Endlich können wir süße Tierbilder \\ einfügen!}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\textwidth]{igel.jpg}
+\end{figure}
+Und genau das machen wir jetzt auch: Sucht euch ein Bild oder mehrere mit einem Motiv eurer Wahl und fügt sie in eure Website unter euren Paragraphen ein.
+\end{center}
 \end{frame}
 
-\begin{frame}[fragile]{Bilder}
-Lösung
+\begin{frame}[fragile]{Iframes}
+Um Gifs einzufügen, brauchen wir iframes:
+\begin{lstlisting}
+<iframe src="url"> </iframe>
+\end{lstlisting}
+\pause
+Höhe und Breite legen wir so fest:
+\begin{lstlisting}
+<iframe src="url" height="200" width="300"> </iframe>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Iframes}
+Die Umrandung ist nicht schön? Kein Problem, ein kleiner Trick:
+\begin{lstlisting}
+<iframe src="url" height="200" width="300" frameBorder="0"> </iframe>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Iframes}
+\textbf{Dann legt mal los:} \\
+Sucht euch auf giphy.com ein cooles Gif aus und fügt es über oder unter eurem Bild ein. 
 \end{frame}
 
 \section{Buttons}
 \begin{frame}[fragile]{Buttons}
-Inhalt...
+button
 \end{frame}
 
 \begin{frame}[fragile]{Buttons}
 Aufgabe: Buttons
 \end{frame}
 
-\begin{frame}[fragile]{Buttons}
-Lösung
-\end{frame}
-
 \section{Listen}
 \begin{frame}[fragile]{Listen}
-Inhalt...
+Zu allerletzt fehlen uns nur noch Listen:
+\pause
+\begin{lstlisting}
+<ul>
+	<li>Nummer 1</li>
+	<li>Nummer 2</li>
+	<li>Nummer 3</li>
+</ul>
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Listen}
-Aufgabe: Listen
-\end{frame}
-
-\begin{frame}[fragile]{Listen}
-Lösung
+Erstellt eine Liste 
+\begin{itemize}
+\item von euren Hobbys,
+\item von Dingen, die ihr gern macht oder
+\item von Dingen, die ihr irgendwann mal machen möchtet!
+\end{itemize}
 \end{frame}
 
 \end{document}
