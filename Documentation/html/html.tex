@@ -146,18 +146,22 @@
 \section {Tagesziel}
 \begin{frame}[fragile]{Tagesziel}
 \begin {itemize}
-\item Das werdet ihr am Tagesende geschafft haben: \url{file:///C:/Users/Kristin/Documents/ungeordneter%20Unikram/web-workshop-master(3)/web-workshop-master/Tag1Ergebnis/Workshop/index.html}
+\item Learning by doing!
+\item Kreativ sein!
+\item Deine erste eigene Webseite mit ganz vielen unterschiedlichen Elementen
+\item Und wie könnte die zum Beispiel aussehen?
+%\item Das werdet ihr am Tagesende geschafft haben: %\url{file:///C:/Users/Kristin/Documents/ungeordneter%20Unikram/web-workshop-master(3)/web-w%orkshop-master/Tag1Ergebnis/Workshop/index.html}
 \end {itemize}
 \end{frame}
 
-\section {Wochenziel}
-\begin{frame}[fragile]{Wochenziel}
+%\section {Wochenziel}
+%\begin{frame}[fragile]{Wochenziel}
 
 %\begin{lstlisting}
 %<script src="script.js"> </script>
 %\end{lstlisting}
 
-\end{frame}
+%\end{frame}
 
 \section{Allgemeiner Aufbau}
 \begin{frame}[fragile]{Was ist HTML?}
@@ -170,8 +174,8 @@ Ein Beispiel:
 </head>
 	
 <body>
-	<h1>My First Heading</h1>
-	<p>My first paragraph.</p>
+	<h1>Meine erste Überschrift</h1>
+	<p>Mein erster Paragraph.</p>
 </body>
 </html> 
 \end{lstlisting}
@@ -192,7 +196,7 @@ Ein Beispiel:
 	<tagname>Inhalt des Tags...</tagname>
 \end{lstlisting}
 \pause
-\fcolorbox{red}{white}{\parbox{\linewidth}{\begin{center}Wichtig: Jeder Tag, der ge\"offnet wird, muss wieder geschlossen werden außer $<$!DOCTYPE html$>$!  (...)\end{center}}}
+\fcolorbox{red}{white}{\parbox{\linewidth}{\begin{center}Wichtig: Fast alle Tags, die ge\"offnet werden, müssen zwingend wieder geschlossen werden außer $<$!DOCTYPE html$>$ und ein paar wenige Ausnahmen!\end{center}}}
 \end{frame}
 
 \begin{frame}[fragile]{Allgemeiner Aufbau}
@@ -207,7 +211,7 @@ Ein Beispiel:
 \end{frame}
 
 \begin{frame}[fragile]{Allgemeiner Aufbau}
-	\textbf{Jetzt ist es endlich soweit:} Erstellt eure erste eigene Website mit einem Head, einem Titel und einem Body! \\
+	\textbf{Jetzt ist es endlich soweit:} \\ Erstellt eure erste eigene Website mit einem Head, einem Titel und einem Body! \\
 	Erinnerung: Grundgerüst
 \end{frame}
 
@@ -216,8 +220,9 @@ Ein Beispiel:
 \begin{itemize}
 \item F\"ur \"Uberschriften verwendet ihr die Tags $<$h1$>$ bis $<$h6$>$:
 \begin{lstlisting}
-	<h1>Überschrift</h1>
+	<h1>Das ist eine Überschrift</h1>
 \end{lstlisting}
+\pause
 \item Mit $<$h1$>$ markiert ihr die wichtigste Überschrift, mit $<$h6$>$ die am wenigsten Wichtigste.
 %\item Dickere \"Uberschriften könnt ihr erstellen in dem ihr ein den Tag wie folgt erweitert:(das Style-Attribut font-size verwendet) zu Styles verschieben
 %\begin{lstlisting}
@@ -231,19 +236,19 @@ Ein Beispiel:
 \begin{itemize}
 \item Für Paragraphen verwendet ihr den Tag $<$p$>$.
 \begin{lstlisting}
-	<p>Paragraph</p>
+	<p>Das ist ein Paragraph</p>
 \end{lstlisting}
 \pause
 \item Einen Zeilenumbruch könnt ihr mit $<$br$>$ herstellen.
 \begin{lstlisting}
-	<p>Zeilen-<br>umbruch</p>
+	<p>Hier entsteht ein<br>Zeilenumbruch</p>
 \end{lstlisting}
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Überschriften und Paragraphen}
-\textbf{Die Webseite bekommt endlich ihre ersten Elemente!} \\
-Fügt eure erste Überschrift in eure Website ein und schreibt direkt danach einen kleinen Paragraphen zu eurer Webseite.
+\textbf{Eure Webseite bekommt endlich ihre ersten Elemente!} \\
+Fügt eure erste Überschrift ein und schreibt direkt danach einen kleinen Paragraphen zu eurer Website.
 \end{frame}
 
 \section{Kommentare}
@@ -263,7 +268,7 @@ Um die Übersicht zu behalten, sind manchmal Kommentare sehr hilfreich!
 \begin{frame}[fragile]{Styles}
 \textbf{Jetzt wird endlich alles schöner!} \\
 %Bedeutung Attribut + wichtig?\\
-Auch das Style-Attribut ist immer gleich aufgebaut:
+Auch der Style-Tag ist immer gleich aufgebaut:
 \pause
 \begin{lstlisting}
 	<tagname style="eigenschaft:wert;">
@@ -277,8 +282,8 @@ Mit dem Style-Attribut könnt ihr jetzt unterschiedliche Elemente kreativer gesta
 \item die Hintergrundfarbe:
 \begin{lstlisting}
 <body style="backround-color:powderblue;">
-	<h1>This is a heading</h1>
-	<p>This is a paragraph</p>
+	<h1>Das ist eine Überschrift</h1>
+	<p>Das ist ein Paragraph</p>
 </body>
 \end{lstlisting}
 \end{itemize}
@@ -289,16 +294,16 @@ Mit dem Style-Attribut könnt ihr jetzt unterschiedliche Elemente kreativer gesta
 \item die Textfarbe:
 \begin{lstlisting}
 <body>
-	<h1 style="color:#006699;">This is a heading</h1>
-	<p style="color:#006699;">This is a paragraph</p>
+	<h1 style="color:#006699;">Überschrift</h1>
+	<p style="color:#006699;">Paragraph</p>
 </body>	
 \end{lstlisting}
 \pause
 \item die Schriftart:
 \begin{lstlisting}
 <body>
-	<h1 style="font-family:verdana;">This is a heading</h1>
-	<p> style="font-family:arial;">This is a paragraph</p>
+	<h1 style="font-family:verdana;">Das ist eine Überschrift</h1>
+	<p> style="font-family:arial;">Das ist ein Paragraph</p>
 </body>
 \end{lstlisting}
 \end{itemize}	
@@ -355,7 +360,7 @@ Bindet z.B. eure Facebook- oder Instagramseite ein, die Youtube-Startseite und d
 \begin{frame}[fragile]{Bilder}
 Als nächstes fügen wir Bilder hinzu mit:
 \begin{lstlisting}
-<img src="url">
+<img src="(*@\textit{url}@*)">
 \end{lstlisting}
 \pause
 Was fällt euch auf?
@@ -378,37 +383,46 @@ Und genau das machen wir jetzt auch: Sucht euch ein Bild oder mehrere mit einem 
 \end{center}
 \end{frame}
 
+\section{Iframes}
 \begin{frame}[fragile]{Iframes}
-Um Gifs einzufügen, brauchen wir iframes:
+\begin{itemize}
+\item Iframes werden benutzt, um eine Webseite in einer Webseite darzustellen
+\item WAS?! Das ganze mal anschaulich! %Direkt zeigen im Code und wie es schlussendlich aussieht
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Iframes}
+\textbf{Wann braucht man so etwas?} \\
+Iframes benötigen wir beispielsweise beim Einbinden von Gifs:
 \begin{lstlisting}
-<iframe src="url"> </iframe>
+<iframe src="(*@\textit{url}@*)"> </iframe>
 \end{lstlisting}
 \pause
 Höhe und Breite legen wir so fest:
 \begin{lstlisting}
-<iframe src="url" height="200" width="300"> </iframe>
+<iframe src="(*@\textit{url}@*)" height="200" width="300"> </iframe>
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Iframes}
-Die Umrandung ist nicht schön? Kein Problem, ein kleiner Trick:
+Das ist aber noch nicht alles, was man mit Iframes machen kann.\\
+Auch Videos bindet ihr damit ganz leicht ein:
 \begin{lstlisting}
-<iframe src="url" height="200" width="300" frameBorder="0"> </iframe>
+<iframe src="(*@\textit{url}@*)" height="200" weight="300"><\iframe>
 \end{lstlisting}
+Was fällt euch auf?
+\pause
+Mit der Ergänzung \textit{allowfullscreen} könnt ihr dem Nutzer das Video sogar im Vollbildmodus zeigen.
 \end{frame}
 
 \begin{frame}[fragile]{Iframes}
 \textbf{Dann legt mal los:} \\
-Sucht euch auf giphy.com ein cooles Gif aus und fügt es über oder unter eurem Bild ein. 
-\end{frame}
-
-\section{Buttons}
-\begin{frame}[fragile]{Buttons}
-button
-\end{frame}
-
-\begin{frame}[fragile]{Buttons}
-Aufgabe: Buttons
+Sucht euch auf giphy.com ein cooles Gif aus und fügt es über oder unter eurem Bild ein. \\
+Die Umrandung ist nicht schön? Kein Problem, ein kleiner Trick:
+\begin{lstlisting}
+<iframe src="(*@\textit{url}@*)" height="200" width="300" frameBorder="0"> </iframe>
+\end{lstlisting}
+Und jetzt fehlt uns nur noch ein Youtube-Video! Bindet also auch das einfach mit dem Iframe-Tag ein.
 \end{frame}
 
 \section{Listen}
@@ -416,11 +430,13 @@ Aufgabe: Buttons
 Zu allerletzt fehlen uns nur noch Listen:
 \pause
 \begin{lstlisting}
-<ul>
-	<li>Nummer 1</li>
-	<li>Nummer 2</li>
-	<li>Nummer 3</li>
-</ul>
+<p>
+	<ul>
+		<li>Nummer 1</li>
+		<li>Nummer 2</li>
+		<li>Nummer 3</li>
+	</ul>
+</p>	
 \end{lstlisting}
 \end{frame}
 
