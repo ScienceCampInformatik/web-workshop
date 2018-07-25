@@ -1,0 +1,61 @@
+body {
+  background-image: url("bilder/hintergrund/pink-blau.png");
+  background-size: cover;
+  padding: 100px;
+  font-size: 20px;
+  font-family: 'Athiti', sans-serif;
+  text-align: center;
+}
+.inhalt
+{
+  padding: 50px 70px;
+  background-image: url("bilder/hintergrund/papier2.png");
+  background-color: #dddddd;
+  margin: auto;
+  width: 600px;
+}
+h1 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 3.5em;
+}
+
+
+
+/************************* MENÜLEISTE **************************/
+.menu {
+    /* Klebe das Menu oben fest */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+    /* design */
+    background: #111111;
+    opacity: 0.9;
+    z-index: 1;
+
+    text-align: center;
+}
+.menu ul {
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    list-style:none;
+}
+
+.menu ul li {
+    float: left;
+}
+
+.menu ul a {
+    display: block;
+    text-decoration:none;
+    color: #DDDDDD;
+    text-align:center;
+    padding: 8px 30px;
+}
+
+.menu ul a:hover {
+    /* Verändere den Hintergrund, wenn man mit der Maus über dem Link ist*/
+    background: #333333;
+}

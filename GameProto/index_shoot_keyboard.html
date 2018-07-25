@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
+</head>
+<body onload="paintGame()">
+<script>
+
+var redGamePiece;
+var runningGamePieces = [];
+var canvasXSize = 500;
+var canvasYSize = 300;
+
+function paintGame() {
+	myGameArea.paint();
+}
+
+function restartGame() {
+    myGameArea.stop();
+	redGamePiece = new component(20, 20, "red", 50, 50);
+	runningGamePieces = [];
+	myGameArea.start();
+	
+	document.onkeydown = function(event) {
+		if(event.keyCode == 38) {
+			startUp();
+		} else if(event.keyCode == 40) {
+			startDown();
+		} else if(event.keyCode == 32) {
+			shoot();
+		}
+	}
+	
+	document.onkeyup = function(event) {
+		if(event.keyCode == 38 || event.keyCode == 40) {
+			release();
+		}
+	}
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+	paint : function() {
+		this.canvas.width = canvasXSize;
+        this.canvas.height = canvasYSize;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+		this.painted = true;
+	},
+    start : function() {
+		if(!this.painted) {
+			this.paint();
+		}
+        this.interval = setInterval(updateGameArea, 20);
+    },
+	stop : function() {
+		clearInterval(this.interval);
+		this.clear();
+	},
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+function component(width, height, color, x, y) {
+    this.width = width;
+    this.height = height;
+    this.x = x;
+    this.y = y;   
+	this.speedY = 0;
+    this.update = function(){
+		this.y += this.speedY;
+        ctx = myGameArea.context;
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+}
+
+function shoot() {
+	runningGamePieces.push(new component(redGamePiece.width, redGamePiece.height, redGamePiece.color, redGamePiece.x, redGamePiece.y));
+}
+
+function startUp() {
+	redGamePiece.speedY = -1;
+}
+
+function release() {
+	redGamePiece.speedY = 0;
+}
+
+function startDown() {
+	redGamePiece.speedY = 1;
+}
+
+function updateGameArea() {
+    myGameArea.clear();        
+    redGamePiece.update();
+	
+	var newRunningGamePieces = [];
+	for(var i = 0; i<runningGamePieces.length; i++) {
+		runningGamePieces[i].x += 5;
+		if(runningGamePieces[i].x <= canvasXSize) {
+			runningGamePieces[i].update();
+			newRunningGamePieces.push(runningGamePieces[i]);
+		}
+	}
+	
+	runningGamePieces = newRunningGamePieces;
+}
+</script>
+<br>
+<button onclick="restartGame()">Neustart!</button>
+</body>
+</html>
