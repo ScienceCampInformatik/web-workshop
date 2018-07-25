@@ -99,11 +99,11 @@
 % *.eps format if you use latex+dvips+ps2pdf, 
 % *.jpg/*.png/*.pdf if you use pdflatex)
 
-\titleimage{logologo}
+\titleimage{learn-coding-online}
 
 %% TITLE LOGO
 
-% for a custom logo on the front page, copy your file into the 'logos'
+% for a custom o on the front page, copy your file into the 'logos'
 % directory, insert the filename in the line below and uncomment it
 
 %\titlelogo{mylogo}
@@ -142,7 +142,7 @@
 \section {Was ist Javascript}
 \begin{frame}{Was ist Javascript}
 \begin {itemize}
-\item Programmiersprache Websites
+\item Programmiersprache für Websites
 \item Einfach zu lernen 
 \item Wird direkt beim Aufruf in Maschinensprache übersetzt und ausgeführt
 \end {itemize}
@@ -151,31 +151,31 @@
 \section {Was ist Javascript}
 \begin{frame}[fragile]{Javascript für die Website}
 \begin {itemize}
-\item Zuerst:  einbinden der Datei die den Code enth"alt mit:
+\item Einbinden der Datei Javascript-Datei in die HTML-Datei (index.html)
+\item Muss ganz unten im Body definiert werden
 \begin{lstlisting}
 <script src="script.js"> </script>
 \end{lstlisting}
-\glqq script.js\grqq als Datei anlegen
+\item \glqq script.js\grqq als Datei im selben Ordner anlegen
 \end {itemize}
 \end{frame}
 
 
 \begin{frame}[fragile]{Buttons!}
 \begin {itemize}
-\item Button Element zur HTML Website hinzuf"ugen. 
-\item Name der Funktion aus der Javascript-Datei
+\item Button Element zur HTML Website hinzuf"ugen
+\item onclick ruft Funktion nach Event \glqq auf Button geklickt\grqq auf
 \begin{lstlisting}
- <button onclick="zeigeName()">
- Zeige Namen!</button>
+<button onclick="zeigeName()">
+Zeige Namen!</button>
 \end{lstlisting}
-\item onClick ruft Funktion nach Event \glqq auf Button geklickt\grqq auf
 \end {itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Buttons! - Die was tun!}
 \begin {itemize}
 \item Funktion muss noch in Javascript implementiert werden
-\item Allgemeiner Funktionsaufbau:
+\item Allgemeiner Funktionsaufbau in Javascript:
 \begin{lstlisting}
 function funktionsName(){
 	//hier kommen die Befehle hin
@@ -190,7 +190,7 @@ function funktionsName(){
 
 \begin{frame}[fragile]{Buttons! - Die was tun!}
 \begin {itemize}
-\item Die Funktion aus dem Button-Element muss definiert werden
+\item Die Funktion aus dem Button-Element muss definiert werden (in script.js)
 \item  Mit window.alert Popup angezeigen
 \item In den Klammern in Anf"uhrungszeichen Text definieren
 \begin{lstlisting}
@@ -203,7 +203,7 @@ window.alert("Hallo!");
 
 
 
-\begin{frame}[fragile]{Aufgabe - Buttons! - Die was tun!}
+\begin{frame}[fragile]{Aufgabe - euer erster Button}
 \begin {itemize}
 \item F"ugt eurer Website einen Button hinzu
 \item Lasst eure Website euch Grü"sen, wenn ihr auf den Button klickt
@@ -213,10 +213,10 @@ window.alert("Hallo!");
 
 \begin{frame}[fragile]{Variablen in Javascript}
 \begin{itemize}
-\item Im Code k"onnen Daten gespeichert werden
+\item Im Code k"onnen Informationen gespeichert werden
 \item Texte, Zahlen, Kommazahlen, Objekte
 \item hei"st: Variablen! 
-\item K"onnen in Funktionen oder einfach au"serhalb stehen ($\Rightarrow$global!)
+\item K"onnen in Funktionen oder einfach au"serhalb von Funktionen in der Datei stehen ($\Rightarrow$global!)
 \begin{lstlisting}
 var name = "Lotti";
 var alter = 23;
@@ -275,7 +275,7 @@ function zeigeName(){
 
 \begin{frame}[fragile]{Inhalt der Website ändern}
 \begin{itemize}
-	\item aus dem Javascript code k"onnen Eigenschaften wie Text, Styling ... ver"andert
+	\item aus dem Javascript code k"onnen Eigenschaften wie Text, Styling ... ver"andert werden
 	\begin{lstlisting}
 	document.getElementById("name").textContent = name;
 	\end{lstlisting}
@@ -304,7 +304,7 @@ function zeigeName(){
 \begin{frame}[fragile]{Listen und Schleifen}
 \begin{itemize}
 		\begin{lstlisting}
-	var list = []; // [] zeigt leere Liste
+	var list = []; // []  leere Liste
 	var list2 = [1,5,10]; // Liste aus 1,5,10
 	\end{lstlisting}
 	\item Elemente einer Liste hinzuf"ugen: 
@@ -321,16 +321,27 @@ function zeigeName(){
 	\item Zugriff auf Listen in Javascript über Index
 	\begin{lstlisting}
 	var list = [10,20,30];
-	list[0] // = 10, Index beginnt bei 0!
-	list.length // Länge der Liste, höchster Index +1 
+	list[0]; // = 10, Index beginnt bei 0!
+	list.length; // Länge der Liste, höchster Index +1 
 	\end{lstlisting}
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{Einschub: Konsole}
+\begin{itemize}
+	\item Konsole für Entwicklerausgaben
+	\item Fehler/Probleme aus Javascript werden dort angezeigt
+	\item Kann Funktionen der Javascript Datei aufrufen
+	\item Einfach F12 im Browser und zum Tab \glqq Console\grqq
+	\item mit console.log("text") kann aus einer Funktion Text in der Konsole ausgegeben werden
+\end{itemize}
+\end{frame}
+
+
 \begin{frame}[fragile]{Listen und Schleifen}
 \begin{itemize}
 \item Schleifen wenn etwas mehrmals getahn werden soll
-\item While schleife = \glqq Mach solange eine Bedingung erfüllt ist\grqq
+\item While schleife = \glqq Mach etwas solange eine Bedingung erfüllt ist\grqq
 \begin{lstlisting}
 var x = 1;
 while(x < 10){
@@ -344,7 +355,7 @@ while(x < 10){
 
 \begin{frame}[fragile]{Listen und Schleifen}
 \begin{itemize}
-	\item Kann auch alle Elemente einer Liste durchgehen
+	\item Schleifen können auch alle Elemente einer Liste durchgehen
 	\begin{lstlisting}
 	var list = ["Hallo ", "Science ", "Camp"];
 	for(var text in list){
@@ -393,6 +404,7 @@ while(x < 10){
 \begin{frame}[fragile]{Zeige Essensliste an!}
 \begin{itemize}
 	\item In Javascript: 
+	\item l"osche erst alle Elemente di
 	\begin{lstlisting}
 	function zeigeEssen() {
 	var ul = document.getElementById("essen");
@@ -410,14 +422,31 @@ while(x < 10){
 \begin{itemize}
 	\item Aufz"ahlungselemente erzeugen in Javascript: 
 	\begin{lstlisting}
-	var li = document.createElement("li");
-	li.appendChild(document.createTextNode("Text"));
-	ul.appendChild(li);
+		function zeigeEssen() {
+		li.appendChild(document.createTextNode("Text"));
+	}
 	\end{lstlisting}
 	\item Erzeugt einen Punkt der Aufzählung und f"ullt den mit Text
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}[fragile]{Zeige Essensliste an!}
+\begin{itemize}
+	\item l"oschen von Aufz"ahlungselemten
+	\begin{lstlisting}
+	function zeigeEssen() {
+	//...
+		var ul = document.getElementById("essen");
+		while( ul.firstChild ){
+		ul.removeChild( ul.firstChild );
+		}
+	}
+	\end{lstlisting}
+	\item l"oscht das erste Kind der Aufz"ahlung bis keines mehr da ist
+\end{itemize}
+
+\end{frame}
 
 \begin{frame}[fragile]{Aufgabe}
 \begin{itemize}
@@ -480,9 +509,9 @@ while(x < 10){
 
 \begin{frame}[fragile]{Dropdown Menus}
 \begin{itemize}
-	\item onChange: Funktion wird bei Neuauswahl aufgerufen
+	\item onchange: Funktion wird bei Neuauswahl aufgerufen
 	\item id um den Wert draus zu lesen
-	\item option-Kind-Element zeigt Optionen
+	\item Option Kind-Element zeigt Optionen
 
 \begin{lstlisting}
 	<select onchange="aendereHintergrund()"  id="hintergrundWechsler">
@@ -493,7 +522,6 @@ while(x < 10){
 \end{itemize}
 \end{frame}
 
-%hier mehr? oder erklärt lena das allgemein?
 \begin{frame}[fragile]{Hinterg"unde}
 \begin{itemize}
 	\item m"ussen als Bilddateien in Ordner bilder/hintergrund
@@ -514,10 +542,9 @@ function aendereHintergrund(){
 \end{itemize}
 \end{frame}
 
-%TODO: switch case???
 \begin{frame}[fragile]{Fallunterscheidung in Javascript}
 \begin{itemize}
-	\item \glqq Wenn Bedingung1 gilt mache A, sonst B\grqq
+	\item \glqq Wenn Bedingung wahr ist mache A, sonst B\grqq
 	\item === vergleicht auf gleichen Inhalt
 	\begin{lstlisting}
 	text = "Hallo";
@@ -531,9 +558,6 @@ function aendereHintergrund(){
 \end{frame}
 
 \begin{frame}[fragile]{Hintergrund "andern }
-\begin{itemize}
-	\item \glqq Wenn Bedingung1 gilt mache A, sonst B\grqq
-	\item === vergleicht auf gleichen Inhalt
 	\begin{lstlisting}
 	if(wahl === "blumen"){
 		document.querySelector("body").style.backgroundImage = "url(bilder/hintergrund/blumen.png)";
@@ -543,7 +567,6 @@ function aendereHintergrund(){
 		document.querySelector("body").style.backgroundSize = "cover";
 	}
 	\end{lstlisting}
-\end{itemize}
 \end{frame}
 
 
