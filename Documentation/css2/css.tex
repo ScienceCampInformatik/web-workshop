@@ -1,0 +1,239 @@
+%% LaTeX-Beamer template for KIT design
+%% by Erik Burger, Christian Hammer
+
+%% title picture by Klaus Krogmann
+%%
+%% version 2.1
+%%
+%% mostly compatible to KIT corporate design v2.0
+%% http://intranet.kit.edu/gestaltungsrichtlinien.php
+%%
+%% Problems, bugs and comments to
+%% burger@kit.edu
+
+\documentclass[18pt]{beamer}
+
+
+%% SLIDE FORMAT
+
+% use 'beamerthemekit' for standard 4:3 ratio
+% for widescreen slides (16:9), use 'beamerthemekitwide'
+\usepackage{listings}
+\usepackage{templates/beamerthemekit}
+% \usepackage{templates/beamerthemekitwide}
+\usepackage{color}
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
+\usepackage{upquote}
+\lstdefinelanguage{JavaScript}{
+	morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+	morecomment=[s]{/*}{*/},
+	morecomment=[l]//,
+	morestring=[b]",
+	morestring=[b]'
+}
+
+\lstdefinelanguage{HTML5}{
+	language=html,
+	sensitive=true, 
+	alsoletter={<>=-},
+	otherkeywords={
+		% HTML tags
+		<html>, <head>, <title>, </title>, <meta, />, </head>, <body>,
+		<canvas, \/canvas>, <script>, </script>, </body>, </html>, <!, html>, <style>, </style>, ><
+	},  
+	ndkeywords={
+		% General
+		=,
+		% HTML attributes
+		charset=, id=, width=, height=,
+		% CSS properties
+		border:, transform:, -moz-transform:, transition-duration:, transition-property:, transition-timing-function:
+	},  
+	morecomment=[s]{<!--}{-->},
+	tag=[s]
+}
+
+\lstset{%
+	% Basic design
+	backgroundcolor=\color{editorGray},
+	basicstyle={\small\ttfamily},   
+	frame=l,
+	% Line numbers
+	xleftmargin={0.75cm},
+	numbers=left,
+	stepnumber=1,
+	firstnumber=1,
+	numberfirstline=true,
+	% Code design   
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{darkgray}\ttfamily,
+	ndkeywordstyle=\color{editorGreen}\bfseries,
+	stringstyle=\color{editorOcher},
+	% Code
+	language=HTML5,
+	alsolanguage=JavaScript,
+	alsodigit={.:;},
+	tabsize=2,
+	showtabs=false,
+	showspaces=false,
+	showstringspaces=false,
+	extendedchars=true,
+	breaklines=true,        
+	% Support for German umlauts
+	literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+}
+%% TITLE PICTURE
+
+% if a custom picture is to be used on the title page, copy it into the 'logos'
+% directory, in the line below, replace 'mypicture' with the 
+% filename (without extension) and uncomment the following line
+% (picture proportions: 63 : 20 for standard, 169 : 40 for wide
+% *.eps format if you use latex+dvips+ps2pdf, 
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+\titleimage{pink-blau}
+
+%% TITLE LOGO
+
+% for a custom logo on the front page, copy your file into the 'logos'
+% directory, insert the filename in the line below and uncomment it
+
+%\titlelogo{mylogo}
+
+% (*.eps format if you use latex+dvips+ps2pdf,
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+%% TikZ INTEGRATION
+
+% use these packages for PCM symbols and UML classes
+% \usepackage{templates/tikzkit}
+% \usepackage{templates/tikzuml}
+
+% the presentation starts here
+
+\title[CSS Part 2]{CSS Part 2}
+\subtitle{Extend beauty!}
+\author{Lena, Kristin, Charlotte}
+
+% Bibliography
+
+\usepackage[citestyle=authoryear,bibstyle=numeric,hyperref,backend=biber]{biblatex}
+\addbibresource{templates/example.bib}
+\bibhang1em
+
+\begin{document}
+
+% change the following line to "ngerman" for German style date and logos
+\selectlanguage{ngerman}
+
+%title page
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section {Wie kann man unsere Webseite noch sch"oner machen?!}
+\begin{frame}{Wie kann man unsere Webseite noch sch"oner machen?!}
+\begin {itemize}
+\item Men"uleiste
+\begin{itemize}
+\item die immer \glqq oben \grqq an der Seite bleibt
+\end{itemize}
+\pause
+\item mit Regenb"ogen
+\begin{itemize}
+\item weil Regenb"ogen alles sch"oner machen!
+\end{itemize}
+\end {itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Ein div f"ur unsere Men"uleiste}
+Um eine Men"uleiste zu stylen, m"ussen wir sie erstmal anlegen!
+\begin {itemize}
+\item div mit der Klasse ''menu'' als erstes Element in unserem body
+\item in das div 
+\begin{itemize}
+\item eine "Uberschrift
+\end{itemize}
+\end{itemize}
+\pause
+\textbf{Los geht's!}
+\end{frame}
+
+\begin{frame}[fragile]{Ein div f"ur unsere Men"uleiste}
+\begin{lstlisting}
+<body>
+  <div class="menu">
+    <h1>Science Camp Informatik</h1>
+  </div>
+  <div class="inhalt">
+  ...
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Jetzt geht's ans Styling!}
+\begin{itemize}
+\item Mit der CSS Konfiguration ''position: fixed'' legen wir eine feste Position vom Men"u auf der Seite fest
+\item Damit es ganz oben ist, geben wir ihm au"serdem die Werte 0 f"ur die Attribute top und left
+\item Au"serdem soll die Men"uleiste "uber die ganze Breite gehen
+\end{itemize}
+\pause
+Probiere es aus! Wie sieht Deine Seite jetzt aus?
+\end{frame}
+
+\begin{frame}[fragile]{Jetzt geht's ans Styling!}
+\begin{itemize}
+\item Um die Men"uleiste vom Rest der Seite abzuheben setzen wir jetzt noch
+\begin{itemize}
+\item das Attribut ''color'' um eine Farbe der Men"uleiste festzulegen
+\item das Attribut ''opacity'' \\
+opacity hat als Wert eine Zahl zwischen 0.0  und 1.0. Dieser Wert bestimmt, wie transparent die Farbe des Elementes ist. 
+\end{itemize}
+\end{itemize}
+\pause
+Probiere es aus! Wie sieht Deine Seite jetzt aus?
+\end{frame}
+
+\begin{frame}[fragile]{Aufgabe - Style Deine Men"uleiste}
+\begin{itemize}
+\item Probiere unterschiedliche Werte f"ur color und opacity aus
+\item Style die "Uberschrift in eurer Men"uleiste, indem Du ihr eine eigene Klasse gibst
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Regenb"ogen auf unserer Webseite}
+\begin{itemize}
+\item Um Farbverl"aufe zu generieren, benutzen wir linear-gradient als Wert f"ur background
+\begin{lstlisting}
+.body {
+  background: linear-gradient([winkel], [farbe1], [farbe2], [farbe3], ...);
+  ...
+} 
+\end{lstlisting}
+\item winkel ist hier die Richtung des Farbverlauf-Effekts. Werte sind zum Beispiel ''45deg'' f"ur einen Farbverlauf von unten links nach oben rechts
+\item Es k"onnen beliebig viele Farben gesetzt werden. Den Wert der Farbe kann man wieder mit rgb(66, 134, 244) angeben \footnote{Google: Color Picker}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Aufgabe - Regenb"ogen auf unserer Webseite}
+\begin{itemize}
+\item Setze linear-gradient als Hintergrund des body-Elements
+\item Spiele mit verschiedenen Farben. Schaffst Du es, einen Regenbogen zu generieren?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Regenb"ogen!}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{Rainbow} 
+\end{figure}
+\end{frame}
+
+\end{document}
