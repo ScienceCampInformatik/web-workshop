@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>Science Camp Informatik - Foto-Party</title>
+		<meta charSet="utf-8" />
+		<link href="foto.css" rel="stylesheet" type="text/css">
+		<script src="foto.js" defer> </script>
+	</head>
+	<body>
+    <h1>Unsere Foto-Party!</h1>
+    <div class="big_container">
+      <div class="fotoshop_container">
+				<div class="canvas_container">
+        	<canvas id="foto_can"></canvas>
+				</div>
+        <div class="canvas_button_container">
+					<ul>
+          	<li><button id="grey_button" class="color_button" onclick="schwarzWeiss()">Schwarz-Weiss</button></li>
+          	<li><button id="bla_button" class="color_button" onclick="gestreift()">Gestreift</button></li>
+					</ul>
+        </div>
+      </div>
+      <div class="input_container">
+				<h2>
+				Und hier ist die Ein- und Ausgabe:
+			</h2>
+				<div class="foto_input_container">
+        	<video id="video" autoplay></video>
+				</div>
+        <div class="input_button_container">
+					<ul>
+          <li><button id="start_cam" class="color_button" onclick="starteCameraInput()">Kamera starten</button></li>
+          <li><input type="file" name="file" class="color_button" id="foto_input" onchange="input()"></input></li>
+          <li><a href="javascript:void(0);" id="foto_down" class="color_button" download>Bild Downloaden</a></li>
+        </div>
+      </div>
+    </div>
+	</body>
+</html>
