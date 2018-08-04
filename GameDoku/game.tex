@@ -302,7 +302,7 @@ textComponent.update();
 \end{itemize}
 \end{frame}
 
-\begin{frame}{schießen implementieren}
+\begin{frame}{Schießen implementieren}
 \begin{itemize}
 	\item eine Komponente wird erzeugt. Wo? 
 	\item diese wird mit den anderen Geschossen in der Liste runningGamePieces gespeichert. 
@@ -311,6 +311,34 @@ textComponent.update();
 	\item wie?
 \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]{Schießen implementieren}
+\begin{itemize}
+	\item In der Funktion updateGameArea() (also der Loopfunktion)
+	\item Liste der Geschosse durchgehen in einer Liste (runningGamePieces)
+	\item wenn piece.x über den Rand überspringen
+	\item ansonsten: update() aufrufen und in einer Liste der noch gültigen Geschosse speichern
+	\item am Ende Liste der runningGamePieces ersetzen
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Schießen implementieren}
+\begin{lstlisting}
+for(var i = 0; i<runningGamePieces.length; i++) {
+	var piece = runningGamePieces[i];
+	if(!piece) {
+		continue;
+	}
+	if(piece.x > canvasXSize) {
+	continue;
+	}
+	piece.update();
+	newRunningGamePieces.push(piece);
+}
+runningGamePieces = newRunningGamePieces;
+\end{lstlisting}
+\end{frame}
+
 
 \section{Die Gegner}
 \begin{frame}{Zufällige Gegner}
