@@ -3,7 +3,27 @@ var canvas = document.getElementById("foto_can");
 var context = canvas.getContext("2d");
 var file;
 
-function input(e) {
+// Hier kommt Deine Bildbearbeitungs Funktion hin!
+function bla() {
+  var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+  var data = imageData.data;
+
+    for(var i = 0; i < data.length; i += 4) {
+      // rot
+      data[i] = data[i];
+      // gruen
+      data[i + 1] = data[i + 1];
+      // blau
+      data[i + 2] = data[i + 2];
+    }
+
+    context.putImageData(imageData, 0, 0);
+    updateFotoDownload();
+}
+
+
+// Funktion, die das Bild im Canvas Object auf die ausgewaehlte Datei setzt
+function setzeFotoInput(e) {
   file = event.target.files[0];
   if(file) {
     var image = new Image();
@@ -33,6 +53,7 @@ function input(e) {
   return false;
 }
 
+// Funktion, die den Dateidownload konfiguriert
 function updateFotoDownload() {
       var dataurl = canvas.toDataURL();
       var fotoDown = document.getElementById("foto_down");
@@ -42,77 +63,7 @@ function updateFotoDownload() {
       }
 }
 
-function schwarzWeiss() {
-  var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-  var data = imageData.data;
-
-    for(var i = 0; i < data.length; i += 4) {
-      var brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
-      // red
-      data[i] = brightness;
-      // green
-      data[i + 1] = brightness;
-      // blue
-      data[i + 2] = brightness;
-    }
-
-    context.putImageData(imageData, 0, 0);
-    updateFotoDownload();
-}
-
-function invertieren() {
-  var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-  var data = imageData.data;
-
-    for(var i = 0; i < data.length; i += 4) {
-      // red
-      data[i] = 255-data[i];
-      // green
-      data[i + 1] = 255-data[i+1];
-      // blue
-      data[i + 2] = 255-data[i+2];
-    }
-
-    context.putImageData(imageData, 0, 0);
-    updateFotoDownload();
-}
-
-function rotBlau() {
-  var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-  var data = imageData.data;
-
-    for(var i = 0; i < data.length; i += 4) {
-      var rot = data[i];
-
-      // red
-      data[i] = data[i+2];
-      // blue
-      data[i + 2] = rot;
-    }
-
-    context.putImageData(imageData, 0, 0);
-    updateFotoDownload();
-}
-
-
-
-
-function gestreift() {
-  var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-  var data = imageData.data;
-
-    for(let i = 0; i < data.length; i += 20) {
-      // green
-      data[i + 1] = 0;
-      // blue
-      data[i + 2] = 0;
-    }
-
-    context.putImageData(imageData, 0, 0);
-
-    updateFotoDownload();
-}
-
+// Funktion, die den Kamera Input startet und konfiguriert
 function starteCameraInput() {
   // Grab elements, create settings, etc.
   var video = document.getElementById('video');
