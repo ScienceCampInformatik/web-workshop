@@ -16,9 +16,9 @@ var minOpponentFrequency = 100; //minimale Dauer bis der nächste Gegener kommt
 var score = 0; //der Score
 var myScore; //Komponente die den Score anzeigt
 var frameNumber = 0; //Anzahl der Aktualisierungen seit dem letzten neuen Gegener
-var interval; //interval für aktualisierungen
-var canvas;
-var context;
+var interval; //Interval für Aktualisierungen
+var canvas; // das Spielfeld
+var context; // der Kontext des Spielfelds der drauf zeichnen etc ermöglicht
 ///////////////////////////////////////////////////////////////
 //
 // Spielinitialisierung, initialisierung des Feldes, start und stop
@@ -28,10 +28,19 @@ var context;
 function paintGame(){
   canvas = document.getElementById("game");
   context = canvas.getContext("2d");
+  startGame();
 }
 
 function startGame() {
-  //setze alle Werte und das Spielfeld zurück und startet die Gameloop
+  //setze alle Werte und das Spielfeld zurück (clear, runningGamePieces und opponentGamePieces auf leere Liste, score auf 0)
+
+  //erstelle den spieler (redGamePiece) mit 20x20 größe in rot (red) bei (50,50)
+
+  //Erstelle die Komponente die den Score anzeigt namens myScore (textComponent, 30px, Schriftart Consolas, Farbe schwarz, x=280 y=40, Score als Text
+
+  //initialisiere Keys
+  //initKeyHandling();
+  //starte die Gameloop
 }
 
 function stopInterval(){
@@ -41,17 +50,15 @@ function stopInterval(){
 function clear(){
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
-
 function startInterval(){
-  //reset frames
-
-  //started interval
+  frameNumber = 0;
   interval = setInterval(updateGameArea, 1);
 }
 
 
-function restartGame() {
-
+fnction restartGame() {
+	stopInterval();
+	startGame();
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -134,21 +141,21 @@ function component(width, height, color, x, y) {
 }
 
 //Erzeugt eine Komponente mit verschiedenen Attributen welche einen Text hat
-//WIDTH := die Breite des Textes
-//HEIGHT := die höhe des Textes
+//TEXTSIZE := Schriftgröße
+//FONT := Schriftart
 //COLOR := Farbe die der Text haben soll
 //x: die x Koordinate auf dem canvas
 //y: die y Koordinate auf dem canvas
 //Koordinate ist immer die obere Linke ecke
-function textComponent(width, height, color, x, y, text) {
-  this.width = width;
-  this.height = height;
+function textComponent(textSize, font, color, x, y, text) {
+  this.textSize = textSize;
+  this.font = font;
   this.x = x;
   this.y = y;
 	this.color = color;
   this.text = text;
   this.update = function(){
-    context.font = this.width + " " + this.height;
+    context.font = this.textSize + " " + this.font;
     context.fillStyle = this.color;
     context.fillText(this.text, this.x, this.y);
   }
@@ -170,30 +177,24 @@ function updateGameArea() {
 		return;
 	}
 	lastUpdate = currentTime;
-  //Löscht alles vom Spielfeld
-
-  //aktualisiert den Standort und zeichnet den Spieler
 
 
 
+  //Lösche alles vom Spielfeld
+
+  //aktualisiert den Standort und zeichnet den Spieler (redGamePiece, funktion update())
+
+  //Leere Listen der aktualisierten Objekte
 	var newRunningGamePieces = [];
 	var newOpponentGamePieces = [];
 
-//aktuallisert alle Gegner
+  //aktuallisert alle Gegner
 	for(var i = 0; i<opponentGamePieces.length; i++) {
 		var opponentPiece = opponentGamePieces[i];
     //überprüfe ob der Angreifer am linken Rand ist
-		if(opponentPiece.x <= 0) {
-			opponentPiece.update();
-			stopInterval();
-			continue;
-		}
+
     //überprüfe ob der Angreifer gegen den Spieler gestoßen ist
-		if(opponentPiece.crashWith(redGamePiece)) {
-			opponentPiece.update();
-			stopInterval();
-			continue;
-		}
+
 
     //überprüfe ob ein Geschoss einen Gegner getroffen hat
 		var crashed = false;
@@ -201,42 +202,27 @@ function updateGameArea() {
 		for(var j = 0; j<runningGamePieces.length; j++) {
 			var piece = runningGamePieces[j];
       //prüft ob das aktuelle geschoss (piece) vorliegt, und wenn ja ob es mit dem aktuellen Gegner (opponentPiece) zussamenstößt
-			if(piece && opponentPiece.crashWith(piece)) {
-        //Wenn ja entferne das Geschoss, merke dir das getroffen wurde, erhöhe den Score, ende die Schleife da nur einer Getroffen werden kann. erhöht die Geschwindigkeit, in der neue Gegner kommen
-				runningGamePieces[j] = null;
-				crashed = true;
-				score += 10;
-        minOpponentFrequency -=2;
-				break;
-			}
+
+      //wenn ja speicher das es einen crash gab, setze den score und lösche den Gegner
 		}
-    //wenn nicht getroffen wurde aktuallisere den Standort und zeichne neu und füge es zu einer Liste der aktuellen gegner hinzu
 		if(!crashed) {
-			opponentPiece.update();
-			newOpponentGamePieces.push(opponentPiece);
+			  //wenn nicht getroffen wurde aktuallisere den Standort und zeichne neu und füge es zu einer Liste der aktuellen gegner hinzu
 		}
 	}
   //ersetze die Liste der Gegner mit der neuen Liste der Gegner
-	opponentGamePieces = newOpponentGamePieces;
 
-//aktuallisert alle Geschosse
+  //aktuallisert alle Geschosse
 	for(var i = 0; i<runningGamePieces.length; i++) {
 		var piece = runningGamePieces[i];
 
     //ist das Geschoss NULL (=> nicht mehr da weil es zb einen Gegner getroffen hat)? wenn ja gehe zum nächsten
-		if(!piece) {
-			continue;
-		}
+
     //ist das Geschoss noch im Bild?
-		if(piece.x > canvasXSize) {
-			continue;
-		}
+
     //wenn ja updaten und in die aktuelle Liste der Geschosse speichern
-		piece.update();
-		newRunningGamePieces.push(piece);
+	
 	}
   //ersetze die alte Liste durch die aktualisierte
-	runningGamePieces = newRunningGamePieces;
 
   //speichere aktuallisierung
 	frameNumber += 1;
@@ -248,8 +234,8 @@ function updateGameArea() {
     //senkt max dauer bis zum nächsten Gegner
 		maxOpponentFrequency -= 2;
     //setzt zufällig zwischen min und max die Anzahl der akualisierungen bis der nächste Gegner gespawnt werden soll
-  opponentFrequency = random(minOpponentFrequency, maxOpponentFrequency);
-  //resette die Anzahl der Aktualisierungen
+    opponentFrequency = random(minOpponentFrequency, maxOpponentFrequency);
+    //resette die Anzahl der Aktualisierungen
 		frameNumber = 0;
 	}
 
@@ -299,7 +285,7 @@ function initKeyHandling(){
   }
   //wird die Taste losgelassen wird die geschwindigkeit auf 0 gesetzt
   document.onkeyup = function(event) {
-    if(event.keyCode == 38 || event.keyCode == 40) {//TODO
+    if(event.keyCode == 38 || event.keyCode == 40) {
       release();
     }
   }

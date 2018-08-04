@@ -183,27 +183,25 @@ function updateGameArea() {
 	lastUpdate = currentTime;
   //Löscht alles vom Spielfeld
   clear();
-    //aktualisiert den Standort und zeichnet den Spieler
-    redGamePiece.update();
+  //aktualisiert den Standort und zeichnet den Spieler
+  redGamePiece.update();
 
 
 	var newRunningGamePieces = [];
 	var newOpponentGamePieces = [];
 
-//aktuallisert alle Gegner
+  //aktuallisert alle Gegner
 	for(var i = 0; i<opponentGamePieces.length; i++) {
 		var opponentPiece = opponentGamePieces[i];
     //überprüfe ob der Angreifer am linken Rand ist
 		if(opponentPiece.x <= 0) {
-			opponentPiece.update();
 			stopInterval();
-			continue;
+			break;
 		}
     //überprüfe ob der Angreifer gegen den Spieler gestoßen ist
 		if(opponentPiece.crashWith(redGamePiece)) {
-			opponentPiece.update();
 			stopInterval();
-			continue;
+			break;
 		}
 
     //überprüfe ob ein Geschoss einen Gegner getroffen hat
@@ -218,7 +216,7 @@ function updateGameArea() {
 				crashed = true;
 				score += 10;
         minOpponentFrequency -=2;
-				break;
+				continue;
 			}
 		}
     //wenn nicht getroffen wurde aktuallisere den Standort und zeichne neu und füge es zu einer Liste der aktuellen gegner hinzu
