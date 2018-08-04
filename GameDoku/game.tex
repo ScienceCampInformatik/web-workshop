@@ -143,10 +143,10 @@
 
 \begin{frame}[fragile]{Was ist HTML5 Canvas}
 \begin{itemize}
-	\item HTML5 Element um Grafiken auf eine Webseite zu zeichnen. 
-	\item wird in HTML mit \textless canvas\textgreater  -Tag eingefügt 
-	\item ist nur ein Container 
-	\item zeichnen erfolgt aus Javascript-code
+	\item HTML5 Element um Grafiken auf eine Webseite zu zeichnen
+	\item Wird in HTML mit \textless canvas\textgreater  -Tag eingefügt 
+	\item Ist nur ein Container 
+	\item Zeichnen erfolgt aus Javascript-code
 \end{itemize}
 \end{frame}
 
@@ -188,9 +188,9 @@ context.strokeRect(x, y, breite, höhe);
 \begin{frame}{Jetzt ihr!}
 \begin{itemize}
 	\item F"ugt ein Canvas Element zum HTML-Dokument hinzu
-	\item ruft die Funktion Paint game am Ende des Bodys aus dem HTML auf. 
-	\item implementiert die Funktion paintGame() 
-	\item fügt verschiedene Vierecke dem Canvas Element hinzu. 
+	\item Ruft die Funktion Paint game am Ende des Bodys aus dem HTML auf
+	\item Implementiert die Funktion paintGame() 
+	\item Fügt verschiedene Vierecke dem Canvas Element hinzu
 \end{itemize}
 \end{frame}
 
@@ -214,7 +214,7 @@ textComponent.update();
 
 \begin{frame}[fragile]{Javascript Objekte - Jetzt ihr!}
 \begin{itemize}
-	\item ersetzt eure zuvor gezeichneten Vierecke durch Objekte
+	\item Ersetzt eure zuvor gezeichneten Vierecke durch Objekte
 	\item Fügt Text hinzu
 	\item speichert alle Objekte in einer globalen Liste
 	
@@ -243,19 +243,19 @@ textComponent.update();
 
 \begin{frame}{Was ist eine Gameloop?}
 \begin{itemize}
-	\item um das Feld zu aktualsieren wird das Spielfeld nach wenigen Millisekunden neugezeichnet
-	\item mit startIntervall kann eine Methode in einem bestimmten Zyklus immer wieder aufgerufen werden 
-	\item zum beenden stopIntervall() aufrufen
-	\item im Zyklus wird immer die Funktion updateGameArea() aufgerufen\\ \( \Rightarrow \) alles was gezeichnet werden muss, soll da rein
+	\item Um das Feld zu aktualsieren wird das Spielfeld nach wenigen Millisekunden neugezeichnet
+	\item Mit startIntervall kann eine Methode in einem bestimmten Zyklus immer wieder aufgerufen werden 
+	\item Zum beenden stopIntervall() aufrufen
+	\item Im Zyklus wird immer die Funktion updateGameArea() aufgerufen\\ \( \Rightarrow \) alles was gezeichnet werden muss, soll da rein
 \end{itemize}
 \end{frame}
 
 \begin{frame}{start, stop, neustart, clear}
 \begin{itemize}
-	\item start besteht aus 2 Schritten: Werte zurück setzen und Inverall starten
-	\item stop muss nur stopInverall ausführen
-	\item neustart besteht auch aus 2 Schritten: stop und start
-	\item clear: leert das Canvas und wird zum Starten aufgerufen, aber auch bei jedem neuzeichnen des Spielfelds
+	\item Start besteht aus 2 Schritten: Werte zurück setzen und Inverall starten
+	\item Stop muss nur stopInverall ausführen
+	\item Neustart besteht auch aus 2 Schritten: stop und start
+	\item Clear: leert das Canvas und wird zum Starten aufgerufen, aber auch bei jedem neuzeichnen des Spielfelds
 
 \end{itemize}
 \end{frame}
@@ -273,22 +273,24 @@ textComponent.update();
 \begin{frame}{Spieler einfügen}
 \begin{itemize}
 	\item Spieler ist rotes Viereck mit Höhe und Breite 20px und Startpunkt bei x=y=50px
-	\item wird als Objekt global gespeichert (redGamePiece)
-	\item wird beim Start angelegt und in der Loop-Funktion dann geupdatet.
+	\item Wird als Objekt global gespeichert (redGamePiece)
+	\item Wird beim Start angelegt und in der Loop-Funktion dann geupdatet
 \end{itemize}
 \end{frame}
 
 \section{Der Spieler}
 \begin{frame}{Spieler bewegen}
 \begin{itemize}
-	\item durch Aufruf der Funktion initKeyHandling() kann der Spieler hoch und runter bewegt werden und eine Schussfunktion aufgerufen werden
+	\item Durch Aufruf der Funktion initKeyHandling() kann der Spieler hoch und runter bewegt werden und eine Schussfunktion aufgerufen werden
 \end{itemize}
 \end{frame}
+
+
 \begin{frame}{initKeyHandling() - BONUS}
 \begin{itemize}
 	\item Es wird auf zwei Events vom Browser reagiert: Taste runterdr"ucken und Taste loslassen
-	\item das Event speichert als keyCode die Nummer der betroffenen Taste
-	\item relevant für uns: 38 (up), 40 (down) und 32(Leertaste)
+	\item Das Event speichert als keyCode die Nummer der betroffenen Taste
+	\item Relevant für uns: 38 (up), 40 (down) und 32(Leertaste)
 	
 \end{itemize}
 \end{frame}
@@ -296,19 +298,19 @@ textComponent.update();
 \begin{frame}{initKeyHandling() - BONUS}
 \begin{itemize}
 	\item Bewegung wird gestartet in dem die Componente des Spielers eine speedY gesetzt bekommt (hier +/-3)
-	\item Bewegung wird beendet in dem die Geschwindigkeit wieder auf 0 gesetzt wird.
-	\item Beim nächsten Update der Komponente wird diese um speedY bewegt und neugezeichnet.
-	\item wird die Leertaste runtergedr"uckt wird die function shoot() aufgerufen
+	\item Bewegung wird beendet in dem die Geschwindigkeit wieder auf 0 gesetzt wird
+	\item Beim nächsten Update der Komponente wird diese um speedY bewegt und neugezeichnet
+	\item Wird die Leertaste runtergedr"uckt wird die function shoot() aufgerufen
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Schießen implementieren}
 \begin{itemize}
-	\item eine Komponente wird erzeugt. Wo? 
-	\item diese wird mit den anderen Geschossen in der Liste runningGamePieces gespeichert. 
-	\item das Geschoss benötigt eine Geschwindigkeit in X-Richtung (positiv oder negativ?) (hier 5)
-	\item in der Loopfunktion müssen diese so lang sie sichtbar sind immer geupdatet werden
-	\item wie?
+	\item Eine Komponente wird erzeugt. Wo? 
+	\item Diese wird mit den anderen Geschossen in der Liste runningGamePieces gespeichert
+	\item Das Geschoss benötigt eine Geschwindigkeit in X-Richtung (positiv oder negativ?) (hier 5)
+	\item In der Loopfunktion müssen diese so lang sie sichtbar sind immer geupdatet werden
+	\item Wie?
 \end{itemize}
 \end{frame}
 
@@ -316,9 +318,9 @@ textComponent.update();
 \begin{itemize}
 	\item In der Funktion updateGameArea() (also der Loopfunktion)
 	\item Liste der Geschosse durchgehen in einer Liste (runningGamePieces)
-	\item wenn piece.x über den Rand überspringen
-	\item ansonsten: update() aufrufen und in einer Liste der noch gültigen Geschosse speichern
-	\item am Ende Liste der runningGamePieces ersetzen
+	\item Wenn piece.x über den Rand überspringen
+	\item Ansonsten: update() aufrufen und in einer Liste der noch gültigen Geschosse speichern
+	\item Am Ende Liste der runningGamePieces ersetzen
 \end{itemize}
 \end{frame}
 
@@ -371,9 +373,9 @@ function random(min, max) {
 
 \begin{frame}[fragile]{Gegner erzeugen - BONUS}
 \begin{itemize}
-	\item 1. zuf"allige Geschwindigkeit generieren (zwischen 0.8 und 4)
-	 \item 2. zuf"allige Gr"o"se der Gegener erzeugen (z.B. zwischen 10 und 40 pixel)  
-	\item 3. zuf"alliegen Spawn Punkt, also die y-Koordinate, erzeugen (zwischen 0 und unterem Ende - Gegenergr"o"se) 
+	\item 1. Zuf"allige Geschwindigkeit generieren (zwischen 0.8 und 4)
+	 \item 2. Zuf"allige Gr"o"se der Gegener erzeugen (z.B. zwischen 10 und 40 pixel)  
+	\item 3. Zuf"alliegen Spawn Punkt, also die y-Koordinate, erzeugen (zwischen 0 und unterem Ende - Gegenergr"o"se) 
 	\item 4. Gegner als neue Komponente erzeugen
 	\item 5. Geschwindkeit in X Richtung setzen(als Negativen Wert)
 	\item 6. Componente der Liste an Gegner hinzufügen	
@@ -386,15 +388,15 @@ function random(min, max) {
 	\item Ziel: alle Gegner Bewegen und neuzeichnen 
 	\item Wo \& Wann: in der Loop-Funktion, also in updateGameArea()
 	\item Idee: Alle Gegner durchgehen mit einer Schleife und jeweils update() aufrufen
-	\item mehr zu beachten? 
+	\item Mehr zu beachten? 
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Gegner in der Loop hinzufügen}
 \begin{itemize}
 	\item Idee: Alle Gegner durchgehen mit einer Schleife und jeweils update() aufrufen
-	\item zu beachten:
-	\item linker Rand
+	\item Zu beachten:
+	\item Linker Rand
 	\item Kollisionen (was soll dann passieren?) 
 \end{itemize}
 \end{frame}
@@ -450,8 +452,8 @@ In der Schleife die die Gegner aktualisiert
 \begin{frame}{Geschoss mit Gegner}
 In der Schleife die die Gegner aktualisiert
 \begin{itemize}
-	\item Idee: bestimme in der Schleife ob der Gegner mit einem Geschoss kollidiert ist.
-	\item dazu: Pro Gegner werden jeweils alle Geschosse durchgegangen
+	\item Idee: bestimme in der Schleife ob der Gegner mit einem Geschoss kollidiert ist
+	\item Dazu: Pro Gegner werden jeweils alle Geschosse durchgegangen
 	\item Bei Crash, speichern, Geschoss entfernen, score erhöhen, Gegner tauchen schneller auf und fortsetzen
 	\item Bei Crash den Gegner nicht in die neue Gegnerliste hinzuf"ugen
 \end{itemize}
