@@ -1,0 +1,61 @@
+.big_container {
+}
+
+.fotoshop_container {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 25px;
+}
+
+.canvas_container {
+  float: left;
+}
+
+.canvas_button_container {
+  float: right;
+}
+
+canvas {
+  width: 300px;
+  height: 300px;
+  border:1px solid #d3d3d3;
+  background-color: #f1f1f1;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.color_button {
+  font-size: 20px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.input_container {
+  width: 100%;
+  height: 300px;
+}
+
+.input_button_container {
+  float: right;
+}
+
+.input_button_container li {
+  font-size: 20px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.foto_input_container {
+  float: left;
+}
+
+video {
+  width: 300px;
+  height: 300px;
+  border:1px solid #d3d3d3;
+  background-color: #f1f1f1;
+}
