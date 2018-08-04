@@ -17,8 +17,8 @@ var score = 0; //der Score
 var myScore; //Komponente die den Score anzeigt
 var frameNumber = 0; //Anzahl der Aktualisierungen seit dem letzten neuen Gegener
 var interval; //interval für aktualisierungen
-var canvas;
-var context;
+var canvas; // das Spielfeld
+var context; // der Kontext des Spielfelds der drauf zeichnen etc ermöglicht
 ///////////////////////////////////////////////////////////////
 //
 // Spielinitialisierung, initialisierung des Feldes, start und stop
@@ -30,8 +30,6 @@ function paintGame(){
   context = canvas.getContext("2d");
   startGame();
 }
-
-
 
 function startGame() {
   //setze alle Werte und das Spielfeld zurück
@@ -56,7 +54,6 @@ function stopInterval(){
 function clear(){
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
-
 function startInterval(){
   frameNumber = 0;
   interval = setInterval(updateGameArea, 1);
@@ -148,21 +145,21 @@ function component(width, height, color, x, y) {
 }
 
 //Erzeugt eine Komponente mit verschiedenen Attributen welche einen Text hat
-//WIDTH := die Breite des Textes
-//HEIGHT := die höhe des Textes
+//TEXTSIZE := Schriftgröße
+//FONT := Schriftart
 //COLOR := Farbe die der Text haben soll
 //x: die x Koordinate auf dem canvas
 //y: die y Koordinate auf dem canvas
 //Koordinate ist immer die obere Linke ecke
-function textComponent(width, height, color, x, y, text) {
-  this.width = width;
-  this.height = height;
+function textComponent(textSize, font, color, x, y, text) {
+  this.textSize = textSize;
+  this.font = font;
   this.x = x;
   this.y = y;
 	this.color = color;
   this.text = text;
   this.update = function(){
-    context.font = this.width + " " + this.height;
+    context.font = this.textSize + " " + this.font;
     context.fillStyle = this.color;
     context.fillText(this.text, this.x, this.y);
   }
@@ -313,7 +310,7 @@ function initKeyHandling(){
   }
   //wird die Taste losgelassen wird die geschwindigkeit auf 0 gesetzt
   document.onkeyup = function(event) {
-    if(event.keyCode == 38 || event.keyCode == 40) {//TODO
+    if(event.keyCode == 38 || event.keyCode == 40) {
       release();
     }
   }

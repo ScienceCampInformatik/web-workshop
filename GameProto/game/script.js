@@ -28,25 +28,10 @@ var context;
 function paintGame(){
   canvas = document.getElementById("game");
   context = canvas.getContext("2d");
-  startGame();
 }
 
-
-
 function startGame() {
-  //setze alle Werte und das Spielfeld zurück
-  clear();
-	runningGamePieces = [];
-	opponentGamePieces = [];
-	score = 0;
-  //erstelle das Spiellfeld
-	redGamePiece = new component(20, 20, "red", 50, 50);
-  //Erstelle die Komponente die den Score anzeigt
-	myScore = new textComponent("30px", "Consolas", "black", 280, 40, score);
-  //initialisiere Keys
-  initKeyHandling();
-  //starte die Gameloop
-  startInterval();
+  //setze alle Werte und das Spielfeld zurück und startet die Gameloop
 }
 
 function stopInterval(){
@@ -58,14 +43,15 @@ function clear(){
 }
 
 function startInterval(){
-  frameNumber = 0;
+  //reset frames
+
+  //started interval
   interval = setInterval(updateGameArea, 1);
 }
 
 
 function restartGame() {
-	stopInterval();
-	startGame();
+
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -185,9 +171,9 @@ function updateGameArea() {
 	}
 	lastUpdate = currentTime;
   //Löscht alles vom Spielfeld
-  clear();
-    //aktualisiert den Standort und zeichnet den Spieler
-    redGamePiece.update();
+
+  //aktualisiert den Standort und zeichnet den Spieler
+
 
 
 	var newRunningGamePieces = [];

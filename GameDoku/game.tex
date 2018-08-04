@@ -187,12 +187,50 @@ context.strokeRect(x, y, breite, höhe);
 
 \begin{frame}{Jetzt ihr!}
 \begin{itemize}
-	\item Fu"gt ein Canvas Element zum HTML-Dokument hinzu
+	\item F"ugt ein Canvas Element zum HTML-Dokument hinzu
 	\item ruft die Funktion Paint game am Ende des Bodys aus dem HTML auf. 
 	\item implementiert die Funktion paintGame() 
 	\item fügt verschiedene Vierecke dem Canvas Element hinzu. 
 \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]{Javascript Objekte}
+\begin{itemize}
+	\item Komponenten, wie Vierecke bestehen eigentlich aus mehreren zusammenhängenden Informationen (Koordinaten, Breite, Höhe...)
+	\item Also alle Informationen in einem Objekt speichern 
+	\item Objekt für gefüllte Viereck und für Text ist jeweils bereits in Javascript Datei vorhanden 
+	
+\end{itemize}
+ \begin{lstlisting}
+var component = new component(20, 20, "red", 50, 50);
+//width, height, color, x, y
+component.update();
+var textComponent = textComponent("30px", "Consolas", "black", 280, 40, "Hallo");
+//testSize, font, color, x, y, text
+textComponent.update();
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Javascript Objekte - Jetzt ihr!}
+\begin{itemize}
+	\item ersetzt eure zuvor gezeichneten Vierecke durch Objekte
+	\item Fügt Text hinzu
+	\item speichert alle Objekte in einer globalen Liste
+	
+
+\end{itemize}
+\begin{lstlisting}
+var component = new component(20, 20, "red", 50, 50);
+//width, height, color, x, y
+component.update();
+var textComponent = textComponent("30px", "Consolas", "black", 280, 40, "Hallo");
+//testSize, font, color, x, y, text
+textComponent.update();
+\end{lstlisting}
+\end{frame}
+
+
 
 \section{Spielbasics}
 
@@ -206,36 +244,207 @@ context.strokeRect(x, y, breite, höhe);
 \begin{frame}{Was ist eine Gameloop?}
 \begin{itemize}
 	\item um das Feld zu aktualsieren wird das Spielfeld nach wenigen Millisekunden neugezeichnet
-	\item 
+	\item mit startIntervall kann eine Methode in einem bestimmten Zyklus immer wieder aufgerufen werden 
+	\item zum beenden stopIntervall() aufrufen
+	\item im Zyklus wird immer die Funktion updateGameArea() aufgerufen\\ \( \Rightarrow \) alles was gezeichnet werden muss, soll da rein
 \end{itemize}
 \end{frame}
 
 \begin{frame}{start, stop, neustart, clear}
+\begin{itemize}
+	\item start besteht aus 2 Schritten: Werte zurück setzen und Inverall starten
+	\item stop muss nur stopInverall ausführen
+	\item neustart besteht auch aus 2 Schritten: stop und start
+	\item clear: leert das Canvas und wird zum Starten aufgerufen, aber auch bei jedem neuzeichnen des Spielfelds
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{start, stop, neustart, clear}
+\begin{itemize}
+	\item Wieso habt ihr zuvor die Objekte in einer Liste gespeichert?
+	\item Wie kann man den Spielablauf mit einer gameloop als Ablauf zeichnen?
+	
+\end{itemize}
+\end{frame}
+
+
+\section{Der Spieler}
+\begin{frame}{Spieler einfügen}
+\begin{itemize}
+	\item Spieler ist rotes Viereck mit Höhe und Breite 20px und Startpunkt bei x=y=50px
+	\item wird als Objekt global gespeichert (redGamePiece)
+	\item wird beim Start angelegt und in der Loop-Funktion dann geupdatet.
+\end{itemize}
 \end{frame}
 
 \section{Der Spieler}
+\begin{frame}{Spieler bewegen}
+\begin{itemize}
+	\item durch Aufruf der Funktion initKeyHandling() kann der Spieler hoch und runter bewegt werden und eine Schussfunktion aufgerufen werden
+\end{itemize}
+\end{frame}
+\begin{frame}{initKeyHandling() - BONUS}
+\begin{itemize}
+	\item Es wird auf zwei Events vom Browser reagiert: Taste runterdr"ucken und Taste loslassen
+	\item das Event speichert als keyCode die Nummer der betroffenen Taste
+	\item relevant für uns: 38 (up), 40 (down) und 32(Leertaste)
+	
+\end{itemize}
+\end{frame}
 
-\begin{frame}{Spieler einfügen}
+\begin{frame}{initKeyHandling() - BONUS}
+\begin{itemize}
+	\item Bewegung wird gestartet in dem die Componente des Spielers eine speedY gesetzt bekommt (hier +/-3)
+	\item Bewegung wird beendet in dem die Geschwindigkeit wieder auf 0 gesetzt wird.
+	\item Beim nächsten Update der Komponente wird diese um speedY bewegt und neugezeichnet.
+	\item wird die Leertaste runtergedr"uckt wird die function shoot() aufgerufen
+\end{itemize}
 \end{frame}
 
 \begin{frame}{schießen implementieren}
+\begin{itemize}
+	\item eine Komponente wird erzeugt. Wo? 
+	\item diese wird mit den anderen Geschossen in der Liste runningGamePieces gespeichert. 
+	\item das Geschoss benötigt eine Geschwindigkeit in X-Richtung (positiv oder negativ?) (hier 5)
+	\item in der Loopfunktion müssen diese so lang sie sichtbar sind immer geupdatet werden
+	\item wie?
+\end{itemize}
 \end{frame}
 
 \section{Die Gegner}
-\begin{frame}{Idee zufällige Gegner}
+\begin{frame}{Zufällige Gegner}
+
+Gegner sollen randomisiert erscheinen.
+Parameter die Randomisiert sein soll:
+\begin{itemize}
+	\item Gr"o"se
+	\item Geschwindigkeit
+	\item H"ohe
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Randomisieren}
+\begin{itemize}
+	\item Math enthält vordefinierte mathematischen Funktionen wie Math.abs(), Math.floor(), Math.sin()
+	\item Mit Math.random() bekommt man eine zuf"allige Kommazahl zwischen 0 und 1 (0 inklusive, 1 nicht)
+	\item Wie kann man mit Math.random() eine zuf"allige Zahl zwischen einem Minimum und einem Maximum machen?
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Randomisieren}
+\begin{lstlisting}
+function random(min, max) {
+	return Math.random()*(max-min+1)+min;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Gegner erzeugen - BONUS}
+\begin{itemize}
+	\item 1. zuf"allige Geschwindigkeit generieren (zwischen 0.8 und 4)
+	 \item 2. zuf"allige Gr"o"se der Gegener erzeugen (z.B. zwischen 10 und 40 pixel)  
+	\item 3. zuf"alliegen Spawn Punkt, also die y-Koordinate, erzeugen (zwischen 0 und unterem Ende - Gegenergr"o"se) 
+	\item 4. Gegner als neue Komponente erzeugen
+	\item 5. Geschwindkeit in X Richtung setzen(als Negativen Wert)
+	\item 6. Componente der Liste an Gegner hinzufügen	
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Gegner in der Loop hinzufügen}
+\begin{itemize}
+	\item Basis: Liste opponentGamePiece mit allen Komponenten
+	\item Ziel: alle Gegner Bewegen und neuzeichnen 
+	\item Wo \& Wann: in der Loop-Funktion, also in updateGameArea()
+	\item Idee: Alle Gegner durchgehen mit einer Schleife und jeweils update() aufrufen
+	\item mehr zu beachten? 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gegner in der Loop hinzufügen}
+\begin{itemize}
+	\item Idee: Alle Gegner durchgehen mit einer Schleife und jeweils update() aufrufen
+	\item zu beachten:
+	\item linker Rand
+	\item Kollisionen (was soll dann passieren?) 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Gegner in der Loop hinzufügen}
+\begin{lstlisting}	
+for(var i = 0; i<opponentGamePieces.length; i++) {
+	var opponentPiece = opponentGamePieces[i];
+	//überprüfe ob der Angreifer am linken Rand ist
+	if(opponentPiece.x <= 0) {
+		stopInterval();
+		break;
+	}
+	//TODO: Kollosionen
+	//Wenn nicht getroffen wurde: 
+	opponentPiece.update();
+	newOpponentGamePieces.push(opponentPiece);
+}
+opponentGamePieces = newOpponentGamePieces;
+	
+\end{lstlisting}
 \end{frame}
 
 \section{Kollisionen}
 \begin{frame}{Kollisionen erkennen}
+\begin{itemize}
+	\item Implementiert als Funktion eines Objekt
+	\item Aufruf über obj.carshWith(otherObj)
+	\item Wie funktioniert das?
+\end{itemize}
+
 \end{frame}
 
 \begin{frame}{Kollisionen verarbeiten}
+Erweiterung des Codes, bei dem die Gegner in der Loop hinzugefügt werden.
+Zwei verschiedene Kollisionen überprüfen:
+\begin{itemize}
+	\item Gegner mit Spieler
+	\item Geschoss mit Gegner
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Gegner mit Spieler}
+In der Schleife die die Gegner aktualisiert
+\begin{lstlisting}
+	if(opponentPiece.crashWith(redGamePiece)) {
+		stopInterval();
+		break;
+	}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Geschoss mit Gegner}
+In der Schleife die die Gegner aktualisiert
+\begin{itemize}
+	\item Idee: bestimme in der Schleife ob der Gegner mit einem Geschoss kollidiert ist.
+	\item dazu: Pro Gegner werden jeweils alle Geschosse durchgegangen
+	\item Bei Crash, speichern, Geschoss entfernen, score erhöhen, Gegner tauchen schneller auf und fortsetzen
+	\item Bei Crash den Gegner nicht in die neue Gegnerliste hinzuf"ugen
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Geschoss mit Gegner}
+In der Schleife die die Gegner aktualisiert
+\begin{lstlisting}
+var crashed = false;
+for(var j = 0; j<runningGamePieces.length; j++) {
+	var piece = runningGamePieces[j];
+	if(piece && opponentPiece.crashWith(piece)) {
+		runningGamePieces[j] = null;
+		crashed = true;
+		score += 10;
+		minOpponentFrequency -=2;
+		continue;
+	}
+}
+//nur wenn nicht gecrashed wird der Gegner wieder in die Liste aufgenommen
+\end{lstlisting}
 \end{frame}
 
 \end{document}
