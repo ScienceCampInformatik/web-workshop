@@ -215,7 +215,7 @@ window.alert("Hallo!");
 \begin{itemize}
 \item Im Code k"onnen Informationen gespeichert werden
 \item Texte, Zahlen, Kommazahlen, Objekte
-\item hei"st: Variablen! 
+\item Hei"st: Variablen! 
 \item K"onnen in Funktionen oder einfach au"serhalb von Funktionen in der Datei stehen ($\Rightarrow$global!)
 \begin{lstlisting}
 var name = "Lotti";
@@ -252,7 +252,7 @@ function zeigeName(){
 
 \begin{frame}[fragile]{Variablen und Buttons}
 \begin{itemize}
-	\item und die Funktion in Javascript 
+	\item Und die Funktion in Javascript 
 	\begin{lstlisting}
 	function aendereName(){
 	name = prompt("Aendere den Namen!","Gib hier Namen an");
@@ -265,17 +265,17 @@ function zeigeName(){
 \begin{frame}[fragile]{Inhalt der Website "andern}
 \begin{itemize}
 \item HTML Elementen können IDs haben
-\item aber auch anders wiedergefunden werden
+\item Aber auch anders wiedergefunden werden
 \begin{lstlisting}
 	<p id="name"> </p>
 \end{lstlisting}
-\item in Javascript kann über document.getElementById auf das Element zugegriffen werden
+\item In Javascript kann über document.getElementById auf das Element zugegriffen werden
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Inhalt der Website ändern}
 \begin{itemize}
-	\item aus dem Javascript code k"onnen Eigenschaften wie Text, Styling ... ver"andert werden
+	\item Aus dem Javascript code k"onnen Eigenschaften wie Text, Styling ... ver"andert werden
 	\begin{lstlisting}
 	document.getElementById("name").textContent = name;
 	\end{lstlisting}
@@ -333,7 +333,7 @@ function zeigeName(){
 	\item Fehler/Probleme aus Javascript werden dort angezeigt
 	\item Kann Funktionen der Javascript Datei aufrufen
 	\item Einfach F12 im Browser und zum Tab \glqq Console\grqq
-	\item mit console.log("text") kann aus einer Funktion Text in der Konsole ausgegeben werden
+	\item Mit console.log("text") kann aus einer Funktion Text in der Konsole ausgegeben werden
 \end{itemize}
 \end{frame}
 
@@ -366,10 +366,90 @@ while(x < 10){
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}[fragile]{Dropdown Menus und CSS-Manipulation}
+\begin{itemize}
+	\item Dropdown-Menu um Hintergrund auszusuchen
+	\item Man braucht: Dropdownmenu, ein paar Bilder/Hintergr"unde und eine Javascript-Funktion 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dropdown Menus}
+\begin{itemize}
+\item onchange: Funktion wird bei Neuauswahl aufgerufen
+\item id um den Wert draus zu lesen
+\item Option Kind-Element zeigt Optionen
+
+\begin{lstlisting}
+<select onchange="aendereHintergrund()"  id="hintergrundWechsler">
+<option value="blumen">Blumen</option>
+<option value="normal">Normal</option>
+</select>
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hinterg"unde}
+\begin{itemize}
+\item M"ussen als Bilddateien in Ordner bilder/hintergrund
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hinterg"unde}
+\begin{itemize}
+\item Javascript:
+\begin{lstlisting}
+function aendereHintergrund(){
+var wahl = document.getElementById("hintergrundWechsler").value
+//...
+}
+\end{lstlisting}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Fallunterscheidung in Javascript}
+\begin{itemize}
+\item \glqq Wenn Bedingung wahr ist mache A, sonst B\grqq
+\item === vergleicht auf gleichen Inhalt
+\begin{lstlisting}
+text = "Hallo";
+if(text === "Hallo"){
+console.log(text);
+}else{
+console.log("kein Hallo!");
+}
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hintergrund "andern }
+\begin{lstlisting}
+if(wahl === "blumen"){
+document.querySelector("body").style.backgroundImage = "url(bilder/hintergrund/blumen.png)";
+document.querySelector("body").style.backgroundSize = "auto";
+}else{
+document.querySelector("body").style.backgroundImage = "url(bilder/hintergrund/pink-blau.png)";
+document.querySelector("body").style.backgroundSize = "cover";
+}
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Aufgabe: Hintergrund "andern }
+\begin{itemize}
+\item F"ugt Website Hintergrundwechsler hinzu
+\item Implementiert Funktion
+\item Bonus: F"ugt mehr Hintergründe hinzu!
+\end{itemize}
+\end{frame}
+
+
 \begin{frame}[fragile]{Aufgabe}
 \begin{itemize}
 	\item F"ugt einen Button hinzu, der ein Popup "offnet, mit dem man ein Lieblingsessen eingeben kann.
-	\item speichert das Gericht in einer Liste.
+	\item Speichert das Gericht in einer Liste.
 \end{itemize}
 \end{frame}
 
@@ -395,7 +475,7 @@ while(x < 10){
 
 \begin{frame}[fragile]{Zeige Essensliste an!}
 \begin{itemize}
-	\item in HTML leeres Aufz"ahlungselement:
+	\item In HTML leeres Aufz"ahlungselement:
 	\begin{lstlisting}
 		  <ul id ="essen"></ul>
 	\end{lstlisting}
@@ -451,7 +531,7 @@ while(x < 10){
 \begin{frame}[fragile]{Aufgabe}
 \begin{itemize}
 	\item Implementiert die Funktion zeigeEssen
-	\item ruft sie jedesmal auf, wenn ein essen der Liste hinzugefügt wird.
+	\item Ruft sie jedesmal auf, wenn ein essen der Liste hinzugefügt wird
 	\item Fügt einen Button hinzu, der die Liste leeren soll (Lösche Essen)
 	\item Implementiert die Funktion dazu
 \end{itemize}
@@ -486,95 +566,17 @@ while(x < 10){
 
 \begin{frame}[fragile]{L"osung}
 \begin{itemize}
-	\item im HTML: 
+	\item Im HTML: 
 	\begin{lstlisting}
 	<button onclick="loescheEssen()">Löschen</button>
 	\end{lstlisting}
-	\item im Javascript:
+	\item Im Javascript:
 	\begin{lstlisting}
 	function loescheEssen(){
 		list = [];
 		zeigeEssen();
 	}
 	\end{lstlisting}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Dropdown Menus und CSS-Manipulation}
-\begin{itemize}
-	\item Dropdown-Menu um Hintergrund auszusuchen
-	\item Man braucht: Dropdownmenu, ein paar Bilder/Hintergr"unde und eine Javascript-Funktion 
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Dropdown Menus}
-\begin{itemize}
-	\item onchange: Funktion wird bei Neuauswahl aufgerufen
-	\item id um den Wert draus zu lesen
-	\item Option Kind-Element zeigt Optionen
-
-\begin{lstlisting}
-	<select onchange="aendereHintergrund()"  id="hintergrundWechsler">
-		<option value="blumen">Blumen</option>
-		<option value="normal">Normal</option>
-	</select>
-\end{lstlisting}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Hinterg"unde}
-\begin{itemize}
-	\item m"ussen als Bilddateien in Ordner bilder/hintergrund
-	
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Hinterg"unde}
-\begin{itemize}
-	\item Javascript:
-	\begin{lstlisting}
-function aendereHintergrund(){
-	var wahl = document.getElementById("hintergrundWechsler").value
-	//...
-}
-	\end{lstlisting}
-	
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Fallunterscheidung in Javascript}
-\begin{itemize}
-	\item \glqq Wenn Bedingung wahr ist mache A, sonst B\grqq
-	\item === vergleicht auf gleichen Inhalt
-	\begin{lstlisting}
-	text = "Hallo";
-	if(text === "Hallo"){
-		console.log(text);
-	}else{
-		console.log("kein Hallo!");
-	}
-	\end{lstlisting}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Hintergrund "andern }
-	\begin{lstlisting}
-	if(wahl === "blumen"){
-		document.querySelector("body").style.backgroundImage = "url(bilder/hintergrund/blumen.png)";
-		document.querySelector("body").style.backgroundSize = "auto";
-	}else{
-		document.querySelector("body").style.backgroundImage = "url(bilder/hintergrund/pink-blau.png)";
-		document.querySelector("body").style.backgroundSize = "cover";
-	}
-	\end{lstlisting}
-\end{frame}
-
-
-\begin{frame}[fragile]{Aufgabe: Hintergrund "andern }
-\begin{itemize}
-	\item F"ugt Website Hintergrundwechsler hinzu
-	\item Implementiert Funktion
-	\item Bonus: F"ugt mehr Hintergründe hinzu!
 \end{itemize}
 \end{frame}
 \end{document}
