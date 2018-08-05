@@ -141,12 +141,12 @@
 
 \section{Canvas Basics}
 
-\begin{frame}[fragile]{Was ist HTML5 Canvas}
+\begin{frame}[fragile]{Was ist HTML5 Canvas?}
 \begin{itemize}
-	\item HTML5 Element um Grafiken auf eine Webseite zu zeichnen
+	\item HTML5 Element, um Grafiken auf eine Webseite zu zeichnen
 	\item Wird in HTML mit \textless canvas\textgreater  -Tag eingefügt 
-	\item Ist nur ein Container 
-	\item Zeichnen erfolgt aus Javascript-code
+	\item Ist eine freie Fläche auf die gezeichnet werden kann
+	\item Zeichnen erfolgt aus Javascript-Code
 \end{itemize}
 \end{frame}
 
@@ -168,7 +168,7 @@
 \end{figure}
 \end{frame}
 
-\begin{frame}[fragile]{Wie zeichnet man Vierecke}
+\begin{frame}[fragile]{Wie zeichnet man Vierecke?}
 \begin{lstlisting}
 //um in JS auf das Canvas zuzugreifen
 canvas = document.getElementById("game");
@@ -188,17 +188,17 @@ context.strokeRect(x, y, breite, höhe);
 \begin{frame}{Jetzt ihr!}
 \begin{itemize}
 	\item F"ugt ein Canvas Element zum HTML-Dokument hinzu
-	\item Ruft die Funktion Paint game am Ende des Bodys aus dem HTML auf
-	\item Implementiert die Funktion paintGame() 
+	\item Ruft die Funktion \glqq paintGame()\grqq{}  am Ende des Bodys aus dem HTML auf
+	\item Implementiert die Funktion  \glqq paintGame()\grqq{} 
 	\item Fügt verschiedene Vierecke dem Canvas Element hinzu
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Javascript Objekte}
 \begin{itemize}
-	\item Komponenten, wie Vierecke bestehen eigentlich aus mehreren zusammenhängenden Informationen (Koordinaten, Breite, Höhe...)
+	\item Komponenten, wie Vierecke, bestehen eigentlich aus mehreren zusammenhängenden Informationen (Koordinaten, Breite, Höhe...)
 	\item Also alle Informationen in einem Objekt speichern 
-	\item Objekt für gefüllte Viereck und für Text ist jeweils bereits in Javascript Datei vorhanden 
+	\item Objekt für gefülltes Viereck und für Text ist jeweils bereits in Javascript Datei vorhanden 
 	
 \end{itemize}
  \begin{lstlisting}
@@ -215,7 +215,7 @@ textComponent.update();
 \begin{frame}[fragile]{Javascript Objekte - Jetzt ihr!}
 \begin{itemize}
 	\item Ersetzt eure zuvor gezeichneten Vierecke durch Objekte
-	\item Fügt Text hinzu
+	\item Fügt einen Text hinzu
 	\item speichert alle Objekte in einer globalen Liste
 	
 
@@ -243,19 +243,19 @@ textComponent.update();
 
 \begin{frame}{Was ist eine Gameloop?}
 \begin{itemize}
-	\item Um das Feld zu aktualsieren wird das Spielfeld nach wenigen Millisekunden neugezeichnet
+	\item Um das Feld zu aktuallsieren, wird das Spielfeld nach wenigen Millisekunden neugezeichnet
 	\item Mit startIntervall kann eine Methode in einem bestimmten Zyklus immer wieder aufgerufen werden 
-	\item Zum beenden stopIntervall() aufrufen
+	\item Zum Beenden stopIntervall() aufrufen
 	\item Im Zyklus wird immer die Funktion updateGameArea() aufgerufen\\ \( \Rightarrow \) alles was gezeichnet werden muss, soll da rein
 \end{itemize}
 \end{frame}
 
-\begin{frame}{start, stop, neustart, clear}
+\begin{frame}{start, stop, neustart und clear}
 \begin{itemize}
-	\item Start besteht aus 2 Schritten: Werte zurück setzen und Inverall starten
+	\item Start besteht aus 2 Schritten: Werte zurücksetzen und Intervall starten
 	\item Stop muss nur stopInverall ausführen
 	\item Neustart besteht auch aus 2 Schritten: stop und start
-	\item Clear: leert das Canvas und wird zum Starten aufgerufen, aber auch bei jedem neuzeichnen des Spielfelds
+	\item Clear: leert das Canvas und wird zum Starten aufgerufen, aber auch bei jedem Neuzeichnen des Spielfelds
 
 \end{itemize}
 \end{frame}
@@ -272,8 +272,8 @@ textComponent.update();
 \section{Der Spieler}
 \begin{frame}{Spieler einfügen}
 \begin{itemize}
-	\item Spieler ist rotes Viereck mit Höhe und Breite 20px und Startpunkt bei x=y=50px
-	\item Wird als Objekt global gespeichert (redGamePiece)
+	\item Spieler ist rotes Viereck mit Höhe und Breite 20px und Startpunkt bei $x=y=50px$
+	\item Wird als Objekt global gespeichert (\glqq redGamePiece\grqq )
 	\item Wird beim Start angelegt und in der Loop-Funktion dann geupdatet
 \end{itemize}
 \end{frame}
@@ -281,46 +281,47 @@ textComponent.update();
 \section{Der Spieler}
 \begin{frame}{Spieler bewegen}
 \begin{itemize}
-	\item Durch Aufruf der Funktion initKeyHandling() kann der Spieler hoch und runter bewegt werden und eine Schussfunktion aufgerufen werden
+	\item Durch Aufruf der Funktion \glqq initKeyHandling()\grqq{}, wird auf Tasten reagiert
+	\item Danach kann der Spieler hoch und runter bewegt werden und eine Schussfunktion aufgerufen werden
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}{initKeyHandling() - BONUS}
+\begin{frame}{ \glqq initKeyHandling()\grqq{} - BONUS}
 \begin{itemize}
 	\item Es wird auf zwei Events vom Browser reagiert: Taste runterdr"ucken und Taste loslassen
-	\item Das Event speichert als keyCode die Nummer der betroffenen Taste
+	\item Das Event speichert als \glqq keyCode\grqq{} die Nummer der betroffenen Taste
 	\item Relevant für uns: 38 (up), 40 (down) und 32(Leertaste)
 	
 \end{itemize}
 \end{frame}
 
-\begin{frame}{initKeyHandling() - BONUS}
+\begin{frame}{ \glqq initKeyHandling()\grqq{} - BONUS}
 \begin{itemize}
-	\item Bewegung wird gestartet in dem die Componente des Spielers eine speedY gesetzt bekommt (hier +/-3)
-	\item Bewegung wird beendet in dem die Geschwindigkeit wieder auf 0 gesetzt wird
+	\item Bewegung wird gestartet, indem die Componente des Spielers eine  \glqq speedY\grqq{} gesetzt bekommt (hier +/-3)
+	\item Bewegung wird beendet, indem die Geschwindigkeit wieder auf 0 gesetzt wird
 	\item Beim nächsten Update der Komponente wird diese um speedY bewegt und neugezeichnet
-	\item Wird die Leertaste runtergedr"uckt wird die function shoot() aufgerufen
+	\item Wird die Leertaste runtergedr"uckt, wird die Funkion  \glqq shoot()\grqq{} aufgerufen
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Schießen implementieren}
 \begin{itemize}
-	\item Eine Komponente wird erzeugt. Wo? 
+	\item Eine Komponente wird erzeugt - Wo? 
 	\item Diese wird mit den anderen Geschossen in der Liste runningGamePieces gespeichert
 	\item Das Geschoss benötigt eine Geschwindigkeit in X-Richtung (positiv oder negativ?) (hier 5)
-	\item In der Loopfunktion müssen diese so lang sie sichtbar sind immer geupdatet werden
+	\item In der Loopfunktion müssen diese, so lange sie sichtbar sind, immer geupdatet werden
 	\item Wie?
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Schießen implementieren}
 \begin{itemize}
-	\item In der Funktion updateGameArea() (also der Loopfunktion)
-	\item Liste der Geschosse durchgehen in einer Liste (runningGamePieces)
-	\item Wenn piece.x über den Rand überspringen
-	\item Ansonsten: update() aufrufen und in einer Liste der noch gültigen Geschosse speichern
-	\item Am Ende Liste der runningGamePieces ersetzen
+	\item In der Funktion \glqq updateGameArea()\grqq{} (also der Loopfunktion)
+	\item Liste der Geschosse in einer Liste durchgehen ( \glqq  runningGamePieces \grqq{})
+	\item Wenn \glqq piece.x\grqq{} über den Rand $\Rightarrow$ überspringen
+	\item Ansonsten: \glqq update()\grqq{} aufrufen und in einer Liste der noch gültigen Geschosse speichern
+	\item Am Ende: Liste der \glqq runningGamePieces\grqq{} ersetzen
 \end{itemize}
 \end{frame}
 
@@ -345,8 +346,8 @@ runningGamePieces = newRunningGamePieces;
 \section{Die Gegner}
 \begin{frame}{Zufällige Gegner}
 
-Gegner sollen randomisiert erscheinen.
-Parameter die Randomisiert sein soll:
+Gegner sollen zufällig erscheinen.
+Parameter, die zufällig sein sollen:
 \begin{itemize}
 	\item Gr"o"se
 	\item Geschwindigkeit
@@ -356,9 +357,9 @@ Parameter die Randomisiert sein soll:
 
 \begin{frame}{Randomisieren}
 \begin{itemize}
-	\item Math enthält vordefinierte mathematischen Funktionen wie Math.abs(), Math.floor(), Math.sin()
-	\item Mit Math.random() bekommt man eine zuf"allige Kommazahl zwischen 0 und 1 (0 inklusive, 1 nicht)
-	\item Wie kann man mit Math.random() eine zuf"allige Zahl zwischen einem Minimum und einem Maximum machen?
+	\item Math enthält vordefinierte mathematischen Funktionen, wie z.B. \glqq Math.abs()\grqq{}, \glqq Math.floor() \grqq{} und \glqq Math.sin()\grqq{}
+	\item Mit \glqq Math.random()\grqq{} bekommt man eine zuf"allige Kommazahl zwischen 0 und 1 (0 inklusive, 1 nicht)
+	\item Wie kann man mit \glqq Math.random()\grqq{} eine zuf"allige Zahl zwischen einem Minimum und einem Maximum erzeugen?
 	
 \end{itemize}
 \end{frame}
@@ -374,28 +375,41 @@ function random(min, max) {
 \begin{frame}[fragile]{Gegner erzeugen - BONUS}
 \begin{itemize}
 	\item 1. Zuf"allige Geschwindigkeit generieren (zwischen 0.8 und 4)
-	 \item 2. Zuf"allige Gr"o"se der Gegener erzeugen (z.B. zwischen 10 und 40 pixel)  
-	\item 3. Zuf"alliegen Spawn Punkt, also die y-Koordinate, erzeugen (zwischen 0 und unterem Ende - Gegenergr"o"se) 
+	 \item 2. Zuf"allige Gr"o"se der Gegner erzeugen (z.B. zwischen 10 und 40 pixel)  
+	\item 3. Zufälliger Spawn Punkt, also die y-Koordinate, erzeugen (zwischen 0 und unterem Ende - Gegenergr"o"se) 
 	\item 4. Gegner als neue Komponente erzeugen
-	\item 5. Geschwindkeit in X Richtung setzen(als Negativen Wert)
-	\item 6. Componente der Liste an Gegner hinzufügen	
+	\item 5. Geschwindkeit in x-Richtung setzen (als negativen Wert)
+	\item 6. Komponente der Liste an Gegner hinzufügen	
 \end{itemize}
+\end{frame}
+\begin{frame}[fragile]{Gegner erzeugen - BONUS}
+\begin{lstlisting}
+function spawnOpponent() {
+	var opponentSpeed = random(0.8, 4);
+	var opponentSize = random(10, 40);
+	var opponentY = random(0, canvasYSize-opponentSize);
+	var opponent = new component(opponentSize, opponentSize, "blue", canvasXSize, opponentY);
+	opponent.speedX -= opponentSpeed;
+	opponentGamePieces.push(opponent);
+}
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}{Gegner in der Loop hinzufügen}
 \begin{itemize}
-	\item Basis: Liste opponentGamePiece mit allen Komponenten
-	\item Ziel: alle Gegner Bewegen und neuzeichnen 
-	\item Wo \& Wann: in der Loop-Funktion, also in updateGameArea()
-	\item Idee: Alle Gegner durchgehen mit einer Schleife und jeweils update() aufrufen
+	\item Basis: Liste \glqq opponentGamePieces\grqq{} mit allen Komponenten
+	\item Ziel: alle Gegner bewegen und neuzeichnen 
+	\item Wo und Wann: in der Loop-Funktion, also in \glqq updateGameArea()\grqq{}
+	\item Idee: Für alle Gegner mit einer Schleife jeweils \glqq update()\grqq{} aufrufen
 	\item Mehr zu beachten? 
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Gegner in der Loop hinzufügen}
+
+Idee: Alle Gegner durchgehen mit einer Schleife und jeweils \glqq update()\grqq{} aufrufen.\\
+Zu beachten:
 \begin{itemize}
-	\item Idee: Alle Gegner durchgehen mit einer Schleife und jeweils update() aufrufen
-	\item Zu beachten:
 	\item Linker Rand
 	\item Kollisionen (was soll dann passieren?) 
 \end{itemize}
@@ -405,7 +419,7 @@ function random(min, max) {
 \begin{lstlisting}	
 for(var i = 0; i<opponentGamePieces.length; i++) {
 	var opponentPiece = opponentGamePieces[i];
-	//überprüfe ob der Angreifer am linken Rand ist
+	//überprüfe, ob der Angreifer am linken Rand ist
 	if(opponentPiece.x <= 0) {
 		stopInterval();
 		break;
@@ -423,15 +437,15 @@ opponentGamePieces = newOpponentGamePieces;
 \section{Kollisionen}
 \begin{frame}{Kollisionen erkennen}
 \begin{itemize}
-	\item Implementiert als Funktion eines Objekt
-	\item Aufruf über obj.carshWith(otherObj)
+	\item Implementiert als Funktion eines Objekts
+	\item Aufruf über \glqq obj.crashWith(otherObj)\grqq{}
 	\item Wie funktioniert das?
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}{Kollisionen verarbeiten}
-Erweiterung des Codes, bei dem die Gegner in der Loop hinzugefügt werden.
+Erweiterung des Codes, bei dem die Gegner in der Loop hinzugefügt werden.\\
 Zwei verschiedene Kollisionen überprüfen:
 \begin{itemize}
 	\item Gegner mit Spieler
@@ -440,7 +454,7 @@ Zwei verschiedene Kollisionen überprüfen:
 \end{frame}
 
 \begin{frame}[fragile]{Gegner mit Spieler}
-In der Schleife die die Gegner aktualisiert
+In der Schleife, die die Gegner aktualisiert
 \begin{lstlisting}
 	if(opponentPiece.crashWith(redGamePiece)) {
 		stopInterval();
@@ -450,17 +464,17 @@ In der Schleife die die Gegner aktualisiert
 \end{frame}
 
 \begin{frame}{Geschoss mit Gegner}
-In der Schleife die die Gegner aktualisiert
+In der Schleife, die die Gegner aktualisiert
 \begin{itemize}
-	\item Idee: bestimme in der Schleife ob der Gegner mit einem Geschoss kollidiert ist
+	\item Idee: bestimme in der Schleife, ob der Gegner mit einem Geschoss kollidiert ist
 	\item Dazu: Pro Gegner werden jeweils alle Geschosse durchgegangen
-	\item Bei Crash, speichern, Geschoss entfernen, score erhöhen, Gegner tauchen schneller auf und fortsetzen
-	\item Bei Crash den Gegner nicht in die neue Gegnerliste hinzuf"ugen
+	\item Bei Crash: speichern, Geschoss entfernen, Score erhöhen und fortsetzen
+	\item Bei Crash: den Gegner nicht in die neue Gegnerliste hinzuf"ugen
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Geschoss mit Gegner}
-In der Schleife die die Gegner aktualisiert
+In der Schleife, die die Gegner aktualisiert
 \begin{lstlisting}
 var crashed = false;
 for(var j = 0; j<runningGamePieces.length; j++) {
@@ -473,7 +487,7 @@ for(var j = 0; j<runningGamePieces.length; j++) {
 		continue;
 	}
 }
-//nur wenn nicht gecrashed wird der Gegner wieder in die Liste aufgenommen
+//nur, wenn nicht gecrashed, wird der Gegner wieder in die Liste aufgenommen
 \end{lstlisting}
 \end{frame}
 

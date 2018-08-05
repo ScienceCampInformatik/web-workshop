@@ -84,7 +84,7 @@ function spawnOpponent() {
 
 //Gibt eine Zufällige Zahl zwischen mit und max, (inkl min und max)
 function random(min, max) {
-	 return Math.random()*(max-min+1)+min;
+	 //TODO
 }
 
 
@@ -220,7 +220,7 @@ function updateGameArea() {
     //ist das Geschoss noch im Bild?
 
     //wenn ja updaten und in die aktuelle Liste der Geschosse speichern
-	
+
 	}
   //ersetze die alte Liste durch die aktualisierte
 
