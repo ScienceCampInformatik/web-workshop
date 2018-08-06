@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        Science Camp Informatik
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Pacifico|Amatic+SC:400|Athiti|Open+Sans|Roboto" rel="stylesheet">
+        <script src="script.js"> </script>
+    </head>
+    <body>
+        <div class="inhalt">
+            <h1>
+                Willkommen!
+            </h1>
+            <h2>
+                Hier ist meine Seite
+            </h2>
+            <p>
+                Hier werde ich alles ausprobieren,
+                was ich auf dem Science Camp Informatik
+                gelernt habe und eine coole Webseite bauen.
+            </p>
+            <p>
+                Diese Seite wird in einer Woche
+                wirklich toll aussehen!
+            </p>
+            <h2>
+                Hier geht es weiter.
+            </h2>
+
+            <!-- Katzenbild -->
+            <img src="bilder/giphy/hund2.gif" class="center"/>
+            <iframe src="https://giphy.com/embed/VTXzh4qtahZS" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+            <!-- Links -->
+            <p>
+                Hier geht es <a href="https://www.facebook.com/" target="_blank">zu meiner Facebookseite</a>.<br/>
+                Hier zu <a href="https://www.youtube.com/" target="_blank">YouTube.</a><br/>
+                Hier zu <a href="http://www.zeit.de/index" target="_blank">Zeit Online.</a><br/>
+            </p>
+
+            <!-- Hobbys -->
+            <p>
+                Meine Hobbys sind
+                <ul>
+                    <li>Tanzen</li>
+                    <li>Reisen</li>
+                    <li>Singen</li>
+                </ul>
+            </p>
+
+            <!-- YouTube Video -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/lXLXaEukp30" frameborder="0" allowfullscreen></iframe>
+
+            <p id="name"> </p>
+            <button onclick="zeigeName()">Zeige den Namen an</button>
+            <button onclick="aendereName()">Ändere den Namen</button>
+            <select onchange="aendereHintergrund()"  id="hintergrundWechsler">
+            	<option value="">--Aendere den Hintergrund--</option>
+                <option value="blumen">Blumen</option>
+                <option value="normal">Normal</option>
+            </select>
+            <button onclick="essenHinzufuegen()"> Füge ein Essen hinzu</button>
+            <button onclick="loescheEssen()">Löschen</button>
+            <ul id ="essen"></ul>
+
+            <iframe src="C:\Users\Kristin\Documents\ScienceCamp2018\web-workshop richtig\Tag1Ergebnis\Workshop\index.html" height="315" weight="500"> </iframe>
+        </div>
+    </body>
+</html>
